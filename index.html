@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DentaWars | Diş Hekimliği Oyunu</title>
+  <meta name="description" content="Ders arasında oyna, klinikte hatırla. Diş hekimliği öğrencileri ve hekimler için bilgi oyunu. Yakında iOS ve Android'de.">
+  <link rel="canonical" href="https://www.dentawars.com/">
+  <meta name="theme-color" content="#FF6B00">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="DentaWars">
+  <meta property="og:locale" content="tr_TR">
+  <meta property="og:url" content="https://www.dentawars.com/">
+  <meta property="og:title" content="DentaWars | Diş Hekimliği Oyunu">
+  <meta property="og:description" content="Ders arasında oyna, klinikte hatırla. Diş hekimliği öğrencileri ve hekimler için bilgi oyunu.">
+  <meta property="og:image" content="https://www.dentawars.com/assets/img/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="48x48" href="/assets/img/favicon-48.png">
+  <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link rel="preload" href="/assets/fonts/poppins-800.woff" as="font" type="font/woff" crossorigin>
+  <link rel="preload" href="/assets/fonts/poppins-600.woff" as="font" type="font/woff" crossorigin>
+  <link rel="stylesheet" href="/assets/css/site.css">
+  <script>document.documentElement.classList.add("js")</script>
+  <script src="/assets/js/sfx.js" defer></script>
+  <script src="/assets/js/intro.js" defer></script>
+  <script src="/assets/js/site.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#icerik">İçeriğe geç</a>
+
+  <header class="top" id="top">
+    <div class="wrap top__in">
+      <a class="top__logo" href="/" aria-label="DentaWars ana sayfa">
+        <img src="/assets/img/logo-yatay.svg" alt="DentaWars" width="137" height="78">
+      </a>
+      <div class="top__act">
+        <button class="snd" id="snd" type="button" aria-pressed="false" aria-label="Sesi aç">
+          <svg class="snd__ico" viewBox="0 0 24 24" aria-hidden="true">
+            <path class="snd__body" d="M4 9.5h3.2L12 5.5v13l-4.8-4H4z"/>
+            <path class="snd__on" d="M15.5 9a4.2 4.2 0 0 1 0 6M18 6.5a7.8 7.8 0 0 1 0 11"/>
+            <path class="snd__off" d="M16 9.5l5 5M21 9.5l-5 5"/>
+          </svg>
+          <span class="snd__txt">Ses</span>
+        </button>
+        <span class="snd__hint" id="sndHint" hidden>Sesi aç, logo sesli kurulsun</span>
+        <a class="btn btn--small" href="https://www.instagram.com/dentawarsapp/" target="_blank" rel="noopener" data-sfx="pop">Instagram</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="icerik">
+
+    <!-- 1 · Kahraman: arena ışığı + canlı logo -->
+    <section class="hero" id="hero">
+      <div class="hero__rays" aria-hidden="true"></div>
+      <div class="hero__glow" aria-hidden="true"></div>
+      <div class="hero__dust" id="dust" aria-hidden="true"></div>
+      <div class="wrap hero__in">
+        <div class="hero__text">
+          <p class="kicker in" style="--d:.1s">Diş hekimliği oyunu</p>
+          <h1 class="hero__title">
+            <span class="line in" style="--d:.25s">Ders arasında oyna,</span>
+            <span class="line in" style="--d:.4s">klinikte hatırla.</span>
+          </h1>
+          <p class="hero__lead in" style="--d:.55s">Diş hekimliği öğrencileri ve hekimler için bilgi oyunu. Kısa turlar, klinik bilgisi ve arkadaşlarınla rekabet tek uygulamada.</p>
+          <div class="hero__cta in" style="--d:.7s">
+            <a class="btn btn--big" href="#dene" data-sfx="pop">Bir tur dene</a>
+            <a class="btn btn--ghost" href="https://www.instagram.com/dentawarsapp/" target="_blank" rel="noopener" data-sfx="pop">Instagram'da takip et</a>
+          </div>
+          <ul class="stores in" style="--d:.85s" aria-label="Uygulama mağazaları">
+            <li class="store"><span class="store__name">App Store</span><span class="store__tag">Yakında</span></li>
+            <li class="store"><span class="store__name">Google Play</span><span class="store__tag">Yakında</span></li>
+          </ul>
+        </div>
+        <div class="hero__art">
+          <button class="hero__stage" id="heroStage" type="button" aria-label="Logo animasyonunu yeniden oynat">
+<!-- HERO-LOGO:BAŞLA -->
+<svg class="hero__logo" id="heroLogo" viewBox="-60 -60 1240 1230" role="img" aria-label="DentaWars logosu: taçlı kalkanın ortasında bandanalı diş Dento, altında DENTA WARS yazısı" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="cRas" gradientUnits="userSpaceOnUse" x1="0" y1="160.5" x2="0" y2="597.5"><stop offset="0" stop-color="#FFF1A8" /><stop offset="0.45" stop-color="#FFD24A" /><stop offset="0.55" stop-color="#F2B21E" /><stop offset="1" stop-color="#C98A12" /></linearGradient><radialGradient id="cFas" cx=".5" cy=".3" r=".8"><stop offset="0" stop-color="#FF9A3C" /><stop offset=".6" stop-color="#FF6B00" /><stop offset="1" stop-color="#C94C00" /></radialGradient></defs><defs><linearGradient id="tOas" gradientUnits="userSpaceOnUse" x1="0" y1="-300.0" x2="0" y2="260.0"><stop offset="0" stop-color="#FFE08A" /><stop offset="0.46" stop-color="#FFAE3A" /><stop offset="0.54" stop-color="#FF7E12" /><stop offset="1" stop-color="#D9500A" /></linearGradient><linearGradient id="tSas" gradientUnits="userSpaceOnUse" x1="0" y1="-300.0" x2="0" y2="260.0"><stop offset="0" stop-color="#FFFFFF" /><stop offset="0.5" stop-color="#D5DFE8" /><stop offset="1" stop-color="#8FA3B5" /></linearGradient><linearGradient id="tBas" gradientUnits="userSpaceOnUse" x1="0" y1="-290.0" x2="0" y2="-150.0"><stop offset="0" stop-color="#FFFFFF" /><stop offset="1" stop-color="#D9E6F0" /></linearGradient><linearGradient id="tMas" gradientUnits="userSpaceOnUse" x1="0" y1="-270.0" x2="0" y2="-150.0"><stop offset="0" stop-color="#DDF1FF" /><stop offset="1" stop-color="#5FAFE6" /></linearGradient></defs><defs><linearGradient id="as1" gradientUnits="userSpaceOnUse" x1="0" y1="641.6" x2="0" y2="774"><stop offset="0" stop-color="#FFFFFF" /><stop offset="0.46" stop-color="#F3F6F9" /><stop offset="0.54" stop-color="#D5DFE8" /><stop offset="1" stop-color="#9AAEC0" /></linearGradient><linearGradient id="as2" gradientUnits="userSpaceOnUse" x1="0" y1="818.0" x2="0" y2="1044"><stop offset="0" stop-color="#FFE38F" /><stop offset="0.46" stop-color="#FFB03A" /><stop offset="0.54" stop-color="#FF8412" /><stop offset="1" stop-color="#E0520A" /></linearGradient></defs><circle id="hRing" cx="560" cy="380" r="0" fill="none" stroke="#FFF3E4" stroke-width="18" opacity="0"/><g id="hCam"><g id="hArma"><g id="hBrush"><g transform="translate(560.0 369.5) rotate(-50) scale(1.218)"><g transform="translate(0 10)" fill="#2A1406" stroke="#2A1406" stroke-width="16" stroke-linejoin="round"><rect x="-18" y="-40" width="36" height="300" rx="18" /><rect x="-12" y="-150" width="24" height="120" rx="12" /><rect x="-26" y="-295" width="52" height="155" rx="22" /><rect x="18" y="-285" width="44" height="132" rx="8" /></g><g fill="url(#tOas)" stroke="#2A1406" stroke-width="8" stroke-linejoin="round"><rect x="-18" y="-40" width="36" height="300" rx="18" /><rect x="-12" y="-150" width="24" height="120" rx="12" /><rect x="-26" y="-295" width="52" height="155" rx="22" /></g><rect x="18" y="-285" width="44" height="132" rx="8" fill="url(#tBas)" stroke="#2A1406" stroke-width="8" stroke-linejoin="round" /><path d="M24 -252 H56" stroke="#2A1406" stroke-width="4" stroke-linecap="round" opacity=".55" /><path d="M24 -222 H56" stroke="#2A1406" stroke-width="4" stroke-linecap="round" opacity=".55" /><path d="M24 -192 H56" stroke="#2A1406" stroke-width="4" stroke-linecap="round" opacity=".55" /><rect x="-8" y="-280" width="10" height="120" rx="5" fill="#FFFFFF" opacity=".35" /></g></g><g id="hMirror"><g transform="translate(560.0 369.5) rotate(50) scale(1.218)"><g transform="translate(0 10)" fill="#2A1406" stroke="#2A1406" stroke-width="16" stroke-linejoin="round"><rect x="-14" y="-150" width="28" height="410" rx="14" /><circle cy="-215" r="66" /></g><g fill="url(#tSas)" stroke="#2A1406" stroke-width="8" stroke-linejoin="round"><rect x="-14" y="-150" width="28" height="410" rx="14" /><circle cy="-215" r="66" /></g><circle cy="-215" r="46" fill="url(#tMas)" stroke="#2A1406" stroke-width="6" /><ellipse cx="-16" cy="-232" rx="14" ry="8" transform="rotate(-35 -16 -232)" fill="#FFFFFF" opacity=".9" /><rect x="-14" y="120" width="28" height="10" fill="#FF7E12" stroke="#2A1406" stroke-width="4" /><rect x="-14" y="150" width="28" height="10" fill="#FF7E12" stroke="#2A1406" stroke-width="4" /><rect x="-14" y="180" width="28" height="10" fill="#FF7E12" stroke="#2A1406" stroke-width="4" /></g></g><g id="hShield"><g transform="translate(560.0 360.0) scale(0.950)"><path d="M0 -210 C80 -210 150 -190 190 -170 L190 20 C190 140 110 210 0 250 C-110 210 -190 140 -190 20 L-190 -170 C-150 -190 -80 -210 0 -210 Z" transform="translate(0 18)" fill="#2A1406" stroke="#2A1406" stroke-width="30" stroke-linejoin="round" /><path d="M0 -210 C80 -210 150 -190 190 -170 L190 20 C190 140 110 210 0 250 C-110 210 -190 140 -190 20 L-190 -170 C-150 -190 -80 -210 0 -210 Z" fill="url(#cRas)" stroke="#2A1406" stroke-width="16" stroke-linejoin="round" /><path d="M0 -210 C80 -210 150 -190 190 -170 L190 20 C190 140 110 210 0 250 C-110 210 -190 140 -190 20 L-190 -170 C-150 -190 -80 -210 0 -210 Z" transform="translate(0 12) scale(.8)" fill="url(#cFas)" stroke="#2A1406" stroke-width="12" stroke-linejoin="round" /><path d="M-130 -150 C-60 -170 60 -170 130 -150 L130 -80 C60 -104 -60 -104 -130 -80 Z" fill="#FFFFFF" opacity=".14" /><g transform="translate(-6.0 24.0) rotate(0) scale(0.760)"><defs><linearGradient id="hThas" gradientUnits="userSpaceOnUse" x1="0" y1="-140.0" x2="0" y2="140.0"><stop offset="0" stop-color="#FFFFFF" /><stop offset="1" stop-color="#D8E2EB" /></linearGradient><linearGradient id="hBhas" gradientUnits="userSpaceOnUse" x1="0" y1="-110.0" x2="0" y2="-42.0"><stop offset="0" stop-color="#FF7A5C" /><stop offset="0.5" stop-color="#E8352A" /><stop offset="1" stop-color="#B51F16" /></linearGradient><clipPath id="hChas"><path d="M 0.0 -126.6 C -44.8 -152.2 -108.8 -139.4 -115.2 -69.0 C -121.6 -11.4 -89.6 20.6 -76.8 71.8 C -67.2 116.6 -54.4 142.2 -35.2 139.0 C -16.0 135.8 -16.0 84.6 0.0 65.4 C 16.0 84.6 16.0 135.8 35.2 139.0 C 54.4 142.2 67.2 116.6 76.8 71.8 C 89.6 20.6 121.6 -11.4 115.2 -69.0 C 108.8 -139.4 44.8 -152.2 0.0 -126.6 Z" /></clipPath></defs><g transform="translate(0 10)" fill="#2A1406" stroke="#2A1406" stroke-width="18" stroke-linejoin="round"><polygon points="112.0,-76.0 206.0,-118.0 220.0,-86.0 126.0,-50.0" /><polygon points="116.0,-56.0 198.0,-26.0 180.0,6.0 112.0,-36.0" /></g><g fill="url(#hBhas)" stroke="#2A1406" stroke-width="9" stroke-linejoin="round"><polygon points="112.0,-76.0 206.0,-118.0 220.0,-86.0 126.0,-50.0" /><polygon points="116.0,-56.0 198.0,-26.0 180.0,6.0 112.0,-36.0" /></g><path d="M 0.0 -126.6 C -44.8 -152.2 -108.8 -139.4 -115.2 -69.0 C -121.6 -11.4 -89.6 20.6 -76.8 71.8 C -67.2 116.6 -54.4 142.2 -35.2 139.0 C -16.0 135.8 -16.0 84.6 0.0 65.4 C 16.0 84.6 16.0 135.8 35.2 139.0 C 54.4 142.2 67.2 116.6 76.8 71.8 C 89.6 20.6 121.6 -11.4 115.2 -69.0 C 108.8 -139.4 44.8 -152.2 0.0 -126.6 Z" transform="translate(0 10)" fill="#2A1406" stroke="#2A1406" stroke-width="12" stroke-linejoin="round" /><path d="M 0.0 -126.6 C -44.8 -152.2 -108.8 -139.4 -115.2 -69.0 C -121.6 -11.4 -89.6 20.6 -76.8 71.8 C -67.2 116.6 -54.4 142.2 -35.2 139.0 C -16.0 135.8 -16.0 84.6 0.0 65.4 C 16.0 84.6 16.0 135.8 35.2 139.0 C 54.4 142.2 67.2 116.6 76.8 71.8 C 89.6 20.6 121.6 -11.4 115.2 -69.0 C 108.8 -139.4 44.8 -152.2 0.0 -126.6 Z" fill="url(#hThas)" /><g clip-path="url(#hChas)"><ellipse cx="95" cy="100" rx="120" ry="150" fill="#C9D5E0" opacity=".45" /><path d="M-132 -86 Q0 -110 132 -86 L132 -42 Q0 -66 -132 -42 Z" fill="url(#hBhas)" stroke="#2A1406" stroke-width="10" stroke-linejoin="round" /><path d="M-122 -74 Q0 -96 122 -74" fill="none" stroke="#FFB4A0" stroke-width="7" stroke-linecap="round" opacity=".85" /></g><path d="M 0.0 -126.6 C -44.8 -152.2 -108.8 -139.4 -115.2 -69.0 C -121.6 -11.4 -89.6 20.6 -76.8 71.8 C -67.2 116.6 -54.4 142.2 -35.2 139.0 C -16.0 135.8 -16.0 84.6 0.0 65.4 C 16.0 84.6 16.0 135.8 35.2 139.0 C 54.4 142.2 67.2 116.6 76.8 71.8 C 89.6 20.6 121.6 -11.4 115.2 -69.0 C 108.8 -139.4 44.8 -152.2 0.0 -126.6 Z" fill="none" stroke="#2A1406" stroke-width="11" stroke-linejoin="round" /><circle cx="120" cy="-62" r="22" fill="url(#hBhas)" stroke="#2A1406" stroke-width="9" /><path d="M-68 -20 Q-46 -26 -22 -10 M68 -20 Q46 -26 22 -10" fill="none" stroke="#2A1406" stroke-width="13" stroke-linecap="round" /><ellipse cx="-40" cy="14" rx="15" ry="20" fill="#2A1406" /><circle cx="-34" cy="5" r="5.5" fill="#FFFFFF" /><ellipse cx="40" cy="14" rx="15" ry="20" fill="#2A1406" /><circle cx="46" cy="5" r="5.5" fill="#FFFFFF" /><path d="M-40 42 Q6 96 46 36 Q8 58 -40 42 Z" fill="#6B1E12" stroke="#2A1406" stroke-width="8" stroke-linejoin="round" /><path d="M-30 47 Q6 62 38 42 L34 50 Q6 70 -26 55 Z" fill="#FFFFFF" /></g></g></g><g id="hCrown"><defs><linearGradient id="cGas" gradientUnits="userSpaceOnUse" x1="0" y1="55.2" x2="0" y2="188.1"><stop offset="0" stop-color="#FFF1A8" /><stop offset="0.45" stop-color="#FFD24A" /><stop offset="0.55" stop-color="#F2B21E" /><stop offset="1" stop-color="#C98A12" /></linearGradient></defs><g transform="translate(0 8.7)" fill="#2A1406" stroke="#2A1406" stroke-width="14.0" stroke-linejoin="round"><polygon points="479.6,168.9 469.1,95.4 514.6,133.9 560.0,65.7 605.4,133.9 650.9,95.4 640.4,168.9" /><rect x="476.1" y="153.1" width="167.8" height="35.0" rx="10.5" /></g><polygon points="479.6,168.9 469.1,95.4 514.6,133.9 560.0,65.7 605.4,133.9 650.9,95.4 640.4,168.9" fill="url(#cGas)" stroke="#2A1406" stroke-width="7.9" stroke-linejoin="round" /><rect x="476.1" y="153.1" width="167.8" height="35.0" rx="10.5" fill="url(#cGas)" stroke="#2A1406" stroke-width="7.9" /><circle cx="560.0" cy="170.6" r="12.2" fill="#FF6B00" stroke="#2A1406" stroke-width="4.4" /><circle cx="511.1" cy="170.6" r="7.9" fill="#FFFFFF" stroke="#2A1406" stroke-width="3.5" /><circle cx="608.9" cy="170.6" r="7.9" fill="#FFFFFF" stroke="#2A1406" stroke-width="3.5" /><circle cx="469.1" cy="95.4" r="11.4" fill="url(#cGas)" stroke="#2A1406" stroke-width="5.2" /><circle cx="560.0" cy="65.7" r="11.4" fill="url(#cGas)" stroke="#2A1406" stroke-width="5.2" /><circle cx="650.9" cy="95.4" r="11.4" fill="url(#cGas)" stroke="#2A1406" stroke-width="5.2" /></g></g><g id="hText"><g id="hL0" class="hl" data-cx="370.7" data-cy="708.8"><path d="M326.80999999999995 764.4466666666666V662.4466666666666Q326.80999999999995 658.1966666666666 328.93499999999995 655.7316666666666Q331.05999999999995 653.2666666666667 334.4599999999999 653.2666666666667H362.84999999999997Q389.87999999999994 653.2666666666667 403.905 666.8666666666667Q417.92999999999995 680.4666666666667 417.92999999999995 709.7066666666667Q417.92999999999995 772.2666666666667 364.54999999999995 772.2666666666667H335.47999999999996Q326.80999999999995 772.2666666666667 326.80999999999995 764.4466666666666ZM359.44999999999993 685.5666666666666V736.3966666666666Q359.44999999999993 739.9666666666667 359.9599999999999 740.9016666666666Q360.46999999999997 741.8366666666667 363.0199999999999 741.8366666666667Q372.36999999999995 741.8366666666667 377.2149999999999 734.8666666666667Q382.05999999999995 727.8966666666666 382.05999999999995 711.6616666666666Q382.05999999999995 695.4266666666666 377.04499999999996 690.4966666666667Q372.03 685.5666666666666 361.15 685.5666666666666Z" transform="translate(0 12.8) rotate(-4.0 370.7 708.8)" fill="#2A1406" stroke="#2A1406" stroke-width="22.1" stroke-linejoin="round" /><path d="M326.80999999999995 764.4466666666666V662.4466666666666Q326.80999999999995 658.1966666666666 328.93499999999995 655.7316666666666Q331.05999999999995 653.2666666666667 334.4599999999999 653.2666666666667H362.84999999999997Q389.87999999999994 653.2666666666667 403.905 666.8666666666667Q417.92999999999995 680.4666666666667 417.92999999999995 709.7066666666667Q417.92999999999995 772.2666666666667 364.54999999999995 772.2666666666667H335.47999999999996Q326.80999999999995 772.2666666666667 326.80999999999995 764.4466666666666ZM359.44999999999993 685.5666666666666V736.3966666666666Q359.44999999999993 739.9666666666667 359.9599999999999 740.9016666666666Q360.46999999999997 741.8366666666667 363.0199999999999 741.8366666666667Q372.36999999999995 741.8366666666667 377.2149999999999 734.8666666666667Q382.05999999999995 727.8966666666666 382.05999999999995 711.6616666666666Q382.05999999999995 695.4266666666666 377.04499999999996 690.4966666666667Q372.03 685.5666666666666 361.15 685.5666666666666Z" transform="rotate(-4.0 370.7 708.8)" fill="#2A1406" stroke="#2A1406" stroke-width="22.1" stroke-linejoin="round" /><path d="M326.80999999999995 764.4466666666666V662.4466666666666Q326.80999999999995 658.1966666666666 328.93499999999995 655.7316666666666Q331.05999999999995 653.2666666666667 334.4599999999999 653.2666666666667H362.84999999999997Q389.87999999999994 653.2666666666667 403.905 666.8666666666667Q417.92999999999995 680.4666666666667 417.92999999999995 709.7066666666667Q417.92999999999995 772.2666666666667 364.54999999999995 772.2666666666667H335.47999999999996Q326.80999999999995 772.2666666666667 326.80999999999995 764.4466666666666ZM359.44999999999993 685.5666666666666V736.3966666666666Q359.44999999999993 739.9666666666667 359.9599999999999 740.9016666666666Q360.46999999999997 741.8366666666667 363.0199999999999 741.8366666666667Q372.36999999999995 741.8366666666667 377.2149999999999 734.8666666666667Q382.05999999999995 727.8966666666666 382.05999999999995 711.6616666666666Q382.05999999999995 695.4266666666666 377.04499999999996 690.4966666666667Q372.03 685.5666666666666 361.15 685.5666666666666Z" transform="rotate(-4.0 370.7 708.8)" fill="url(#as1)" stroke="#FFFFFF" stroke-opacity=".35" stroke-width="3.1" stroke-linejoin="round" /></g><g id="hL1" class="hl" data-cx="461.9" data-cy="708.8"><path d="M483.78 694.86Q487.01 694.86 487.01 706.76Q487.01 710.33 486.245 715.175Q485.47999999999996 720.02 483.44 720.02H461.84999999999997V737.02H493.13Q496.02 737.02 497.03999999999996 744.5Q497.54999999999995 747.73 497.54999999999995 751.385Q497.54999999999995 755.0400000000001 496.53 760.82Q495.51 766.6 493.13 766.6H434.98999999999995Q428.53 766.6 428.53 761.33V652.02Q428.53 647.6 432.44 647.6H493.29999999999995Q496.87 647.6 496.87 662.645Q496.87 677.69 493.29999999999995 677.69H461.84999999999997V694.86Z" transform="translate(0 12.8) rotate(3.0 461.9 708.8)" fill="#2A1406" stroke="#2A1406" stroke-width="22.1" stroke-linejoin="round" /><path d="M483.78 694.86Q487.01 694.86 487.01 706.76Q487.01 710.33 486.245 715.175Q485.47999999999996 720.02 483.44 720.02H461.84999999999997V737.02H493.13Q496.02 737.02 497.03999999999996 744.5Q497.54999999999995 747.73 497.54999999999995 751.385Q497.54999999999995 755.0400000000001 496.53 760.82Q495.51 766.6 493.13 766.6H434.98999999999995Q428.53 766.6 428.53 761.33V652.02Q428.53 647.6 432.44 647.6H493.29999999999995Q496.87 647.6 496.87 662.645Q496.87 677.69 493.29999999999995 677.69H461.84999999999997V694.86Z" transform="rotate(3.0 461.9 708.8)" fill="#2A1406" stroke="#2A1406" stroke-width="22.1" stroke-linejoin="round" /><path d="M483.78 694.86Q487.01 694.86 487.01 706.76Q487.01 710.33 486.245 715.175Q485.47999999999996 720.02 483.44 720.02H461.84999999999997V737.02H493.13Q496.02 737.02 497.03999999999996 744.5Q497.54999999999995 747.73 497.54999999999995 751.385Q497.54999999999995 755.0400000000001 496.53 760.82Q495.51 766.6 493.13 766.6H434.98999999999995Q428.53 766.6 428.53 761.33V652.02Q428.53 647.6 432.44 647.6H493.29999999999995Q496.87 647.6 496.87 662.645Q496.87 677.69 493.29999999999995 677.69H461.84999999999997V694.86Z" transform="rotate(3.0 461.9 708.8)" fill="url(#as1)" stroke="#FFFFFF" stroke-opacity=".35" stroke-width="3.1" stroke-linejoin="round" /></g><g id="hL2" class="hl" data-cx="555.9" data-cy="708.8"><path d="M602.5 767.3933333333333Q602.5 770.9633333333334 586.52 770.9633333333334Q570.54 770.9633333333334 569.18 768.4133333333333L540.79 715.3733333333333V768.2433333333333Q540.79 771.3033333333333 525.0649999999999 771.3033333333333Q509.34 771.3033333333333 509.34 768.2433333333333V654.5133333333333Q509.34 651.9633333333334 522.77 651.9633333333334Q528.04 651.9633333333334 535.095 652.8983333333333Q542.15 653.8333333333333 543.68 656.3833333333333L570.88 708.7433333333333V655.3633333333333Q570.88 652.1333333333333 586.69 652.1333333333333Q602.5 652.1333333333333 602.5 655.3633333333333Z" transform="translate(0 12.8) rotate(-2.0 555.9 708.8)" fill="#2A1406" stroke="#2A1406" stroke-width="22.1" stroke-linejoin="round" /><path d="M602.5 767.3933333333333Q602.5 770.9633333333334 586.52 770.9633333333334Q570.54 770.9633333333334 569.18 768.4133333333333L540.79 715.3733333333333V768.2433333333333Q540.79 771.3033333333333 525.0649999999999 771.3033333333333Q509.34 771.3033333333333 509.34 768.2433333333333V654.5133333333333Q509.34 651.9633333333334 522.77 651.9633333333334Q528.04 651.9633333333334 535.095 652.8983333333333Q542.15 653.8333333333333 543.68 656.3833333333333L570.88 708.7433333333333V655.3633333333333Q570.88 652.1333333333333 586.69 652.1333333333333Q602.5 652.1333333333333 602.5 655.3633333333333Z" transform="rotate(-2.0 555.9 708.8)" fill="#2A1406" stroke="#2A1406" stroke-width="22.1" stroke-linejoin="round" /><path d="M602.5 767.3933333333333Q602.5 770.9633333333334 586.52 770.9633333333334Q570.54 770.9633333333334 569.18 768.4133333333333L540.79 715.3733333333333V768.2433333333333Q540.79 771.3033333333333 525.0649999999999 771.3033333333333Q509.34 771.3033333333333 509.34 768.2433333333333V654.5133333333333Q509.34 651.9633333333334 522.77 651.9633333333334Q528.04 651.9633333333334 535.095 652.8983333333333Q542.15 653.8333333333333 543.68 656.3833333333333L570.88 708.7433333333333V655.3633333333333Q570.88 652.1333333333333 586.69 652.1333333333333Q602.5 652.1333333333333 602.5 655.3633333333333Z" transform="rotate(-2.0 555.9 708.8)" fill="url(#as1)" stroke="#FFFFFF" stroke-opacity=".35" stroke-width="3.1" stroke-linejoin="round" /></g><g id="hL3" class="hl" data-cx="650.7" data-cy="708.8"><path d="M667.67 765.0133333333333Q667.67 768.4133333333333 650.8399999999999 768.4133333333333Q634.01 768.4133333333333 634.01 765.0133333333333V679.6733333333334H613.61Q610.72 679.6733333333334 609.53 671.8533333333334Q609.02 668.1133333333333 609.02 664.2033333333334Q609.02 660.2933333333333 609.53 656.5533333333333Q610.72 648.7333333333333 613.61 648.7333333333333H687.56Q690.45 648.7333333333333 691.64 656.5533333333333Q692.15 660.2933333333333 692.15 664.2033333333334Q692.15 668.1133333333333 691.64 671.8533333333334Q690.45 679.6733333333334 687.56 679.6733333333334H667.67Z" transform="translate(0 12.8) rotate(4.0 650.7 708.8)" fill="#2A1406" stroke="#2A1406" stroke-width="22.1" stroke-linejoin="round" /><path d="M667.67 765.0133333333333Q667.67 768.4133333333333 650.8399999999999 768.4133333333333Q634.01 768.4133333333333 634.01 765.0133333333333V679.6733333333334H613.61Q610.72 679.6733333333334 609.53 671.8533333333334Q609.02 668.1133333333333 609.02 664.2033333333334Q609.02 660.2933333333333 609.53 656.5533333333333Q610.72 648.7333333333333 613.61 648.7333333333333H687.56Q690.45 648.7333333333333 691.64 656.5533333333333Q692.15 660.2933333333333 692.15 664.2033333333334Q692.15 668.1133333333333 691.64 671.8533333333334Q690.45 679.6733333333334 687.56 679.6733333333334H667.67Z" transform="rotate(4.0 650.7 708.8)" fill="#2A1406" stroke="#2A1406" stroke-width="22.1" stroke-linejoin="round" /><path d="M667.67 765.0133333333333Q667.67 768.4133333333333 650.8399999999999 768.4133333333333Q634.01 768.4133333333333 634.01 765.0133333333333V679.6733333333334H613.61Q610.72 679.6733333333334 609.53 671.8533333333334Q609.02 668.1133333333333 609.02 664.2033333333334Q609.02 660.2933333333333 609.53 656.5533333333333Q610.72 648.7333333333333 613.61 648.7333333333333H687.56Q690.45 648.7333333333333 691.64 656.5533333333333Q692.15 660.2933333333333 692.15 664.2033333333334Q692.15 668.1133333333333 691.64 671.8533333333334Q690.45 679.6733333333334 687.56 679.6733333333334H667.67Z" transform="rotate(4.0 650.7 708.8)" fill="url(#as1)" stroke="#FFFFFF" stroke-opacity=".35" stroke-width="3.1" stroke-linejoin="round" /></g><g id="hL4" class="hl" data-cx="746.0" data-cy="708.8"><path d="M778.74 773.74Q763.95 773.74 762.76 768.98L757.1500000000001 747.05H730.12L725.19 768.13Q724.1700000000001 773.4 708.87 773.4Q700.71 773.4 696.8 772.4649999999999Q692.89 771.53 692.89 771.02L722.98 655.93Q722.98 654.5699999999999 746.27 654.5699999999999Q769.5600000000001 654.5699999999999 769.5600000000001 655.93L798.97 771.1899999999999Q798.97 772.38 791.1500000000001 773.06Q783.33 773.74 778.74 773.74ZM734.37 725.4599999999999H752.22L744.57 690.27H743.5500000000001Z" transform="translate(0 12.8) rotate(-3.0 746.0 708.8)" fill="#2A1406" stroke="#2A1406" stroke-width="22.1" stroke-linejoin="round" /><path d="M778.74 773.74Q763.95 773.74 762.76 768.98L757.1500000000001 747.05H730.12L725.19 768.13Q724.1700000000001 773.4 708.87 773.4Q700.71 773.4 696.8 772.4649999999999Q692.89 771.53 692.89 771.02L722.98 655.93Q722.98 654.5699999999999 746.27 654.5699999999999Q769.5600000000001 654.5699999999999 769.5600000000001 655.93L798.97 771.1899999999999Q798.97 772.38 791.1500000000001 773.06Q783.33 773.74 778.74 773.74ZM734.37 725.4599999999999H752.22L744.57 690.27H743.5500000000001Z" transform="rotate(-3.0 746.0 708.8)" fill="#2A1406" stroke="#2A1406" stroke-width="22.1" stroke-linejoin="round" /><path d="M778.74 773.74Q763.95 773.74 762.76 768.98L757.1500000000001 747.05H730.12L725.19 768.13Q724.1700000000001 773.4 708.87 773.4Q700.71 773.4 696.8 772.4649999999999Q692.89 771.53 692.89 771.02L722.98 655.93Q722.98 654.5699999999999 746.27 654.5699999999999Q769.5600000000001 654.5699999999999 769.5600000000001 655.93L798.97 771.1899999999999Q798.97 772.38 791.1500000000001 773.06Q783.33 773.74 778.74 773.74ZM734.37 725.4599999999999H752.22L744.57 690.27H743.5500000000001Z" transform="rotate(-3.0 746.0 708.8)" fill="url(#as1)" stroke="#FFFFFF" stroke-opacity=".35" stroke-width="3.1" stroke-linejoin="round" /></g><g id="hL5" class="hl" data-cx="301.1" data-cy="932.0"><path d="M164.45000000000005 837.0Q163.55000000000004 833.7 194.75000000000003 833.7Q229.25000000000003 833.7 230.15000000000003 839.4L244.85000000000002 965.7L276.65000000000003 837.9Q278.15000000000003 833.4 300.05000000000007 833.4Q321.95000000000005 833.4 323.45000000000005 837.6L354.65000000000003 966.3L372.05000000000007 838.8Q372.65000000000003 835.5 385.85 834.3Q399.05 833.1 407.15000000000003 833.1Q438.65000000000003 833.1 437.75 837.3L401.45000000000005 1036.2Q400.25 1040.7 384.35 1042.8000000000002Q368.45000000000005 1044.9 358.55000000000007 1044.9Q321.35 1044.9 319.55000000000007 1036.5L299.15000000000003 954.0L276.95000000000005 1036.2Q275.75 1041.6 255.95000000000005 1044.0Q245.75000000000003 1044.9 235.55 1044.9L216.35000000000002 1044.0Q196.55000000000004 1041.9 195.35000000000002 1036.5Z" transform="translate(0 22.5) rotate(-4.0 301.1 932.0)" fill="#2A1406" stroke="#2A1406" stroke-width="39.0" stroke-linejoin="round" /><path d="M164.45000000000005 837.0Q163.55000000000004 833.7 194.75000000000003 833.7Q229.25000000000003 833.7 230.15000000000003 839.4L244.85000000000002 965.7L276.65000000000003 837.9Q278.15000000000003 833.4 300.05000000000007 833.4Q321.95000000000005 833.4 323.45000000000005 837.6L354.65000000000003 966.3L372.05000000000007 838.8Q372.65000000000003 835.5 385.85 834.3Q399.05 833.1 407.15000000000003 833.1Q438.65000000000003 833.1 437.75 837.3L401.45000000000005 1036.2Q400.25 1040.7 384.35 1042.8000000000002Q368.45000000000005 1044.9 358.55000000000007 1044.9Q321.35 1044.9 319.55000000000007 1036.5L299.15000000000003 954.0L276.95000000000005 1036.2Q275.75 1041.6 255.95000000000005 1044.0Q245.75000000000003 1044.9 235.55 1044.9L216.35000000000002 1044.0Q196.55000000000004 1041.9 195.35000000000002 1036.5Z" transform="rotate(-4.0 301.1 932.0)" fill="#2A1406" stroke="#2A1406" stroke-width="39.0" stroke-linejoin="round" /><path d="M164.45000000000005 837.0Q163.55000000000004 833.7 194.75000000000003 833.7Q229.25000000000003 833.7 230.15000000000003 839.4L244.85000000000002 965.7L276.65000000000003 837.9Q278.15000000000003 833.4 300.05000000000007 833.4Q321.95000000000005 833.4 323.45000000000005 837.6L354.65000000000003 966.3L372.05000000000007 838.8Q372.65000000000003 835.5 385.85 834.3Q399.05 833.1 407.15000000000003 833.1Q438.65000000000003 833.1 437.75 837.3L401.45000000000005 1036.2Q400.25 1040.7 384.35 1042.8000000000002Q368.45000000000005 1044.9 358.55000000000007 1044.9Q321.35 1044.9 319.55000000000007 1036.5L299.15000000000003 954.0L276.95000000000005 1036.2Q275.75 1041.6 255.95000000000005 1044.0Q245.75000000000003 1044.9 235.55 1044.9L216.35000000000002 1044.0Q196.55000000000004 1041.9 195.35000000000002 1036.5Z" transform="rotate(-4.0 301.1 932.0)" fill="url(#as2)" stroke="#FFFFFF" stroke-opacity=".35" stroke-width="5.4" stroke-linejoin="round" /></g><g id="hL6" class="hl" data-cx="537.3" data-cy="932.0"><path d="M595.05 1034.6Q568.95 1034.6 566.85 1026.2L556.95 987.5H509.25L500.55 1024.7Q498.75 1034.0 471.75 1034.0Q457.35 1034.0 450.45000000000005 1032.35Q443.55 1030.7 443.55 1029.8L496.65 826.7Q496.65 824.3 537.75 824.3Q578.85 824.3 578.85 826.7L630.75 1030.1Q630.75 1032.2 616.95 1033.4Q603.15 1034.6 595.05 1034.6ZM516.75 949.4H548.25L534.75 887.3H532.95Z" transform="translate(0 22.5) rotate(3.0 537.3 932.0)" fill="#2A1406" stroke="#2A1406" stroke-width="39.0" stroke-linejoin="round" /><path d="M595.05 1034.6Q568.95 1034.6 566.85 1026.2L556.95 987.5H509.25L500.55 1024.7Q498.75 1034.0 471.75 1034.0Q457.35 1034.0 450.45000000000005 1032.35Q443.55 1030.7 443.55 1029.8L496.65 826.7Q496.65 824.3 537.75 824.3Q578.85 824.3 578.85 826.7L630.75 1030.1Q630.75 1032.2 616.95 1033.4Q603.15 1034.6 595.05 1034.6ZM516.75 949.4H548.25L534.75 887.3H532.95Z" transform="rotate(3.0 537.3 932.0)" fill="#2A1406" stroke="#2A1406" stroke-width="39.0" stroke-linejoin="round" /><path d="M595.05 1034.6Q568.95 1034.6 566.85 1026.2L556.95 987.5H509.25L500.55 1024.7Q498.75 1034.0 471.75 1034.0Q457.35 1034.0 450.45000000000005 1032.35Q443.55 1030.7 443.55 1029.8L496.65 826.7Q496.65 824.3 537.75 824.3Q578.85 824.3 578.85 826.7L630.75 1030.1Q630.75 1032.2 616.95 1033.4Q603.15 1034.6 595.05 1034.6ZM516.75 949.4H548.25L534.75 887.3H532.95Z" transform="rotate(3.0 537.3 932.0)" fill="url(#as2)" stroke="#FFFFFF" stroke-opacity=".35" stroke-width="5.4" stroke-linejoin="round" /></g><g id="hL7" class="hl" data-cx="719.0" data-cy="932.0"><path d="M702.8499999999999 1037.8Q702.8499999999999 1042.6 674.3499999999999 1042.6Q645.55 1042.6 645.55 1038.1V842.5Q645.55 832.0 656.65 832.0H713.9499999999999Q792.8499999999999 832.0 792.8499999999999 893.5Q792.8499999999999 912.1 785.6499999999999 927.25Q778.4499999999999 942.4 765.25 951.4L803.05 1014.4Q800.65 1021.6 787.4499999999999 1030.9Q769.4499999999999 1043.8 757.75 1043.8Q746.05 1043.8 740.3499999999999 1035.4L712.15 969.7H702.8499999999999ZM702.8499999999999 885.1V930.1H704.3499999999999Q732.8499999999999 930.1 732.8499999999999 906.4Q732.8499999999999 895.6 727.3 890.35Q721.75 885.1 709.15 885.1Z" transform="translate(0 22.5) rotate(-2.0 719.0 932.0)" fill="#2A1406" stroke="#2A1406" stroke-width="39.0" stroke-linejoin="round" /><path d="M702.8499999999999 1037.8Q702.8499999999999 1042.6 674.3499999999999 1042.6Q645.55 1042.6 645.55 1038.1V842.5Q645.55 832.0 656.65 832.0H713.9499999999999Q792.8499999999999 832.0 792.8499999999999 893.5Q792.8499999999999 912.1 785.6499999999999 927.25Q778.4499999999999 942.4 765.25 951.4L803.05 1014.4Q800.65 1021.6 787.4499999999999 1030.9Q769.4499999999999 1043.8 757.75 1043.8Q746.05 1043.8 740.3499999999999 1035.4L712.15 969.7H702.8499999999999ZM702.8499999999999 885.1V930.1H704.3499999999999Q732.8499999999999 930.1 732.8499999999999 906.4Q732.8499999999999 895.6 727.3 890.35Q721.75 885.1 709.15 885.1Z" transform="rotate(-2.0 719.0 932.0)" fill="#2A1406" stroke="#2A1406" stroke-width="39.0" stroke-linejoin="round" /><path d="M702.8499999999999 1037.8Q702.8499999999999 1042.6 674.3499999999999 1042.6Q645.55 1042.6 645.55 1038.1V842.5Q645.55 832.0 656.65 832.0H713.9499999999999Q792.8499999999999 832.0 792.8499999999999 893.5Q792.8499999999999 912.1 785.6499999999999 927.25Q778.4499999999999 942.4 765.25 951.4L803.05 1014.4Q800.65 1021.6 787.4499999999999 1030.9Q769.4499999999999 1043.8 757.75 1043.8Q746.05 1043.8 740.3499999999999 1035.4L712.15 969.7H702.8499999999999ZM702.8499999999999 885.1V930.1H704.3499999999999Q732.8499999999999 930.1 732.8499999999999 906.4Q732.8499999999999 895.6 727.3 890.35Q721.75 885.1 709.15 885.1Z" transform="rotate(-2.0 719.0 932.0)" fill="url(#as2)" stroke="#FFFFFF" stroke-opacity=".35" stroke-width="5.4" stroke-linejoin="round" /></g><g id="hL8" class="hl" data-cx="882.2" data-cy="932.0"><path d="M825.3499999999999 962.8Q831.05 967.3 845.0 975.0999999999999Q858.9499999999999 982.9 871.6999999999999 982.9Q884.4499999999999 982.9 884.4499999999999 973.0Q884.4499999999999 968.5 880.8499999999999 965.05Q877.25 961.6 867.65 957.1Q858.05 952.6 853.25 950.05Q848.4499999999999 947.5 840.5 941.65Q832.55 935.8 828.3499999999999 929.5Q816.3499999999999 912.4 816.3499999999999 886.0Q816.3499999999999 859.6 836.0 841.45Q855.65 823.3 887.4499999999999 823.3Q909.05 823.3 927.3499999999999 827.95Q945.65 832.6 946.25 840.1Q946.25 841.0 946.25 841.9Q946.25 852.4 939.65 868.45Q933.05 884.5 930.3499999999999 886.3Q911.15 876.4 896.0 876.4Q880.8499999999999 876.4 880.8499999999999 887.2Q880.8499999999999 893.8 891.9499999999999 898.9Q894.3499999999999 900.1 898.8499999999999 902.2Q903.3499999999999 904.3 909.1999999999999 907.15Q915.05 910.0 921.8 914.35Q928.55 918.7 936.3499999999999 925.9Q952.25 940.9 952.25 965.5Q952.25 997.6 934.55 1018.0Q916.8499999999999 1038.4 879.9499999999999 1039.0Q861.9499999999999 1039.0 847.3999999999999 1036.0Q832.8499999999999 1033.0 822.05 1024.3Q811.25 1015.6 811.25 1003.3Q811.25 991.0 815.75 978.85Q820.25 966.7 825.3499999999999 962.8Z" transform="translate(0 22.5) rotate(4.0 882.2 932.0)" fill="#2A1406" stroke="#2A1406" stroke-width="39.0" stroke-linejoin="round" /><path d="M825.3499999999999 962.8Q831.05 967.3 845.0 975.0999999999999Q858.9499999999999 982.9 871.6999999999999 982.9Q884.4499999999999 982.9 884.4499999999999 973.0Q884.4499999999999 968.5 880.8499999999999 965.05Q877.25 961.6 867.65 957.1Q858.05 952.6 853.25 950.05Q848.4499999999999 947.5 840.5 941.65Q832.55 935.8 828.3499999999999 929.5Q816.3499999999999 912.4 816.3499999999999 886.0Q816.3499999999999 859.6 836.0 841.45Q855.65 823.3 887.4499999999999 823.3Q909.05 823.3 927.3499999999999 827.95Q945.65 832.6 946.25 840.1Q946.25 841.0 946.25 841.9Q946.25 852.4 939.65 868.45Q933.05 884.5 930.3499999999999 886.3Q911.15 876.4 896.0 876.4Q880.8499999999999 876.4 880.8499999999999 887.2Q880.8499999999999 893.8 891.9499999999999 898.9Q894.3499999999999 900.1 898.8499999999999 902.2Q903.3499999999999 904.3 909.1999999999999 907.15Q915.05 910.0 921.8 914.35Q928.55 918.7 936.3499999999999 925.9Q952.25 940.9 952.25 965.5Q952.25 997.6 934.55 1018.0Q916.8499999999999 1038.4 879.9499999999999 1039.0Q861.9499999999999 1039.0 847.3999999999999 1036.0Q832.8499999999999 1033.0 822.05 1024.3Q811.25 1015.6 811.25 1003.3Q811.25 991.0 815.75 978.85Q820.25 966.7 825.3499999999999 962.8Z" transform="rotate(4.0 882.2 932.0)" fill="#2A1406" stroke="#2A1406" stroke-width="39.0" stroke-linejoin="round" /><path d="M825.3499999999999 962.8Q831.05 967.3 845.0 975.0999999999999Q858.9499999999999 982.9 871.6999999999999 982.9Q884.4499999999999 982.9 884.4499999999999 973.0Q884.4499999999999 968.5 880.8499999999999 965.05Q877.25 961.6 867.65 957.1Q858.05 952.6 853.25 950.05Q848.4499999999999 947.5 840.5 941.65Q832.55 935.8 828.3499999999999 929.5Q816.3499999999999 912.4 816.3499999999999 886.0Q816.3499999999999 859.6 836.0 841.45Q855.65 823.3 887.4499999999999 823.3Q909.05 823.3 927.3499999999999 827.95Q945.65 832.6 946.25 840.1Q946.25 841.0 946.25 841.9Q946.25 852.4 939.65 868.45Q933.05 884.5 930.3499999999999 886.3Q911.15 876.4 896.0 876.4Q880.8499999999999 876.4 880.8499999999999 887.2Q880.8499999999999 893.8 891.9499999999999 898.9Q894.3499999999999 900.1 898.8499999999999 902.2Q903.3499999999999 904.3 909.1999999999999 907.15Q915.05 910.0 921.8 914.35Q928.55 918.7 936.3499999999999 925.9Q952.25 940.9 952.25 965.5Q952.25 997.6 934.55 1018.0Q916.8499999999999 1038.4 879.9499999999999 1039.0Q861.9499999999999 1039.0 847.3999999999999 1036.0Q832.8499999999999 1033.0 822.05 1024.3Q811.25 1015.6 811.25 1003.3Q811.25 991.0 815.75 978.85Q820.25 966.7 825.3499999999999 962.8Z" transform="rotate(4.0 882.2 932.0)" fill="url(#as2)" stroke="#FFFFFF" stroke-opacity=".35" stroke-width="5.4" stroke-linejoin="round" /></g></g><g id="hSparks" fill="#FFD24A" stroke="#2A1406" stroke-width="5" stroke-linejoin="round"></g><g id="hStars"></g></g></svg>
+<!-- HERO-LOGO:BİTİR -->
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- kayan bant -->
+    <div class="ticker" aria-hidden="true">
+      <div class="ticker__track">
+        <span>Düello</span><i>★</i><span>Görsel sorular</span><i>★</i><span>Klinik vaka</span><i>★</i><span>Sınıfça oyun</span><i>★</i><span>Ders arasında oyna</span><i>★</i><span>Klinikte hatırla</span><i>★</i>
+        <span>Düello</span><i>★</i><span>Görsel sorular</span><i>★</i><span>Klinik vaka</span><i>★</i><span>Sınıfça oyun</span><i>★</i><span>Ders arasında oyna</span><i>★</i><span>Klinikte hatırla</span><i>★</i>
+      </div>
+    </div>
+
+    <!-- 2 · Bir tur dene: sitede oynanan mini tur -->
+    <section class="sec sec--arena" id="dene" aria-labelledby="dene-baslik">
+      <div class="wrap quiz-wrap">
+        <div class="quiz-intro">
+          <p class="kicker">Bir tur dene</p>
+          <h2 id="dene-baslik" class="sec__title sec__title--light">Üç soru, kırk beş saniye.</h2>
+          <p class="sec__lead">Uygulamanın tadına buradan bak. Doğru cevap altın yanar, yanlışta doğrusu gösterilir; kimse puanını görmez.</p>
+          <img class="quiz-intro__dento" src="/assets/img/maskot-duello.svg" alt="" width="220" height="220">
+        </div>
+
+        <div class="quiz" id="quiz" aria-live="polite">
+          <!-- başlangıç -->
+          <div class="quiz__screen is-on" data-screen="start">
+            <p class="quiz__tag">Örnek tur · 3 soru</p>
+            <p class="quiz__big">Hazır mısın?</p>
+            <p class="quiz__small">Her soru için 15 saniye. Süre bitince doğru cevap gösterilir.</p>
+            <button class="btn btn--big" type="button" id="quizStart" data-sfx="pop">Başla</button>
+          </div>
+          <!-- soru -->
+          <div class="quiz__screen" data-screen="q">
+            <div class="quiz__head">
+              <span class="quiz__count" id="qCount">1 / 3</span>
+              <span class="quiz__streak" id="qStreak" hidden>Seri ×2</span>
+            </div>
+            <div class="quiz__timer" aria-hidden="true"><span id="qBar"></span></div>
+            <p class="quiz__q" id="qText"></p>
+            <div class="quiz__opts" id="qOpts"></div>
+          </div>
+          <!-- sonuç -->
+          <div class="quiz__screen" data-screen="end">
+            <div class="quiz__stars" id="qStars" aria-hidden="true">
+              <svg viewBox="-50 -50 100 100"><path d="M0 -40 L11 -12 L40 -11 L17 7 L25 36 L0 19 L-25 36 L-17 7 L-40 -11 L-11 -12Z"/></svg>
+              <svg viewBox="-50 -50 100 100"><path d="M0 -40 L11 -12 L40 -11 L17 7 L25 36 L0 19 L-25 36 L-17 7 L-40 -11 L-11 -12Z"/></svg>
+              <svg viewBox="-50 -50 100 100"><path d="M0 -40 L11 -12 L40 -11 L17 7 L25 36 L0 19 L-25 36 L-17 7 L-40 -11 L-11 -12Z"/></svg>
+            </div>
+            <p class="quiz__big" id="qEndTitle"></p>
+            <p class="quiz__small" id="qEndText"></p>
+            <div class="quiz__endcta">
+              <button class="btn" type="button" id="quizAgain" data-sfx="pop">Yeni tur</button>
+              <a class="btn btn--ink" href="https://www.instagram.com/dentawarsapp/" target="_blank" rel="noopener" data-sfx="pop">Çıkınca haber al</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3 · Kimin için -->
+    <section class="sec sec--cream" aria-labelledby="kim">
+      <div class="wrap">
+        <p class="kicker kicker--or">Kimin için</p>
+        <h2 id="kim" class="sec__title">Fakülteden kliniğe, aynı oyun.</h2>
+        <div class="duo">
+          <article class="card tilt reveal">
+            <img class="card__dento bob" src="/assets/img/maskot-duello.svg" alt="" width="170" height="170">
+            <h3 class="card__title">Öğrenciler</h3>
+            <p>Ders arasında, otobüste, sınav haftasında. Birkaç dakikalık turlarla öğrendiğin kalıcı olsun; arkadaşlarınla yarışırken tekrar etmiş ol.</p>
+          </article>
+          <article class="card tilt reveal">
+            <img class="card__dento bob" src="/assets/img/maskot-klinik.svg" alt="" width="170" height="170">
+            <h3 class="card__title">Hekimler</h3>
+            <p>Mezuniyetten yıllar sonra da bilgi taze kalmalı. Günde birkaç dakikayla klinik bilgini güncel tut, meslektaşlarınla kendini sına.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4 · Nasıl -->
+    <section class="sec sec--arena" aria-labelledby="nasil">
+      <div class="wrap">
+        <p class="kicker">Nasıl oynanır</p>
+        <h2 id="nasil" class="sec__title sec__title--light">Üç adım, birkaç dakika.</h2>
+        <ol class="steps">
+          <li class="step stamp">
+            <span class="step__no" aria-hidden="true">1</span>
+            <h3 class="step__title">Bilgini test et</h3>
+            <p>Klinik dallardan ve temel bilimlerden sorular. Her tur kısa; ne zaman bırakırsan oradan devam edersin.</p>
+          </li>
+          <li class="step stamp">
+            <span class="step__no" aria-hidden="true">2</span>
+            <h3 class="step__title">Arkadaşlarınla kapış</h3>
+            <p>Bire bir düello ya da ders arasında bütün sınıf aynı sorularda. Kimin daha hızlı ve doğru olduğu anında görünür.</p>
+          </li>
+          <li class="step stamp">
+            <span class="step__no" aria-hidden="true">3</span>
+            <h3 class="step__title">Öğrenmeye devam et</h3>
+            <p>Yanlış cevapladığın sorular birkaç gün sonra yeniden karşına çıkar. Unuttuğun yerden çalışırsın, bildiğini tekrar etmezsin.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- 5 · Oyunun içinde -->
+    <section class="sec sec--ink" aria-labelledby="icinde">
+      <div class="wrap">
+        <p class="kicker kicker--gold">Oyunun içinde</p>
+        <h2 id="icinde" class="sec__title sec__title--light">Dento her turda yanında.</h2>
+        <div class="modes">
+          <button class="mode flip" type="button" data-sfx="boing">
+            <img src="/assets/img/maskot-duello.svg" alt="" width="200" height="200">
+            <span class="mode__title">Düello</span>
+            <span class="mode__txt">Bir rakip, aynı sorular, kısa süre. Doğru ve hızlı olan kazanır.</span>
+          </button>
+          <button class="mode flip" type="button" data-sfx="boing">
+            <img src="/assets/img/maskot-solo.svg" alt="" width="200" height="200">
+            <span class="mode__title">Görsel sorular</span>
+            <span class="mode__txt">Röntgen filmi, ağız içi fotoğraf, alet. Bakarak tanı, yerini bul.</span>
+          </button>
+          <button class="mode flip" type="button" data-sfx="boing">
+            <img src="/assets/img/maskot-klinik.svg" alt="" width="200" height="200">
+            <span class="mode__title">Klinik vaka</span>
+            <span class="mode__txt">Bir hasta, bir şikâyet. Tanıyı ve tedavi yolunu adım adım kur.</span>
+          </button>
+          <button class="mode flip" type="button" data-sfx="boing">
+            <img src="/assets/img/maskot-lig.svg" alt="" width="200" height="200">
+            <span class="mode__title">Sınıfça oyun</span>
+            <span class="mode__txt">Bir kod, bütün sınıf aynı anda. Ders arası tavlanın yerine.</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6 · Kapanış -->
+    <section class="sec sec--gold" aria-labelledby="yakinda">
+      <div class="wrap final">
+        <img class="final__dento bob" src="/assets/img/maskot-solo.svg" alt="" width="230" height="230">
+        <div>
+          <span class="badge pop-in">Yakında</span>
+          <h2 id="yakinda" class="sec__title">App Store ve Google Play'de.</h2>
+          <p class="final__lead">İlk duyurular Instagram'da. Takipte kal, çıktığı gün haberin olsun.</p>
+          <a class="btn btn--ink btn--big" href="https://www.instagram.com/dentawarsapp/" target="_blank" rel="noopener" data-sfx="pop" data-confetti>@dentawarsapp</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="foot">
+    <div class="wrap foot__in">
+      <img src="/assets/img/logo-yatay.svg" alt="DentaWars" width="120" height="68">
+      <p>© <span data-yil>2026</span> DentaWars · Diş hekimliği öğrencileri ve hekimler için.</p>
+      <a href="https://www.instagram.com/dentawarsapp/" target="_blank" rel="noopener">Instagram</a>
+    </div>
+  </footer>
+
+  <canvas class="confetti" id="confetti" aria-hidden="true"></canvas>
+</body>
+</html>

@@ -1,0 +1,401 @@
+/* DentaWars — site stili.
+   Kaynak: marka/DentaWars-Marka-Kimligi.pdf · uygulamanın seçilen "Alev Arena" dili (lobi = arena).
+
+   DEGRADE KURALLARI — "doğru kurgulanmış degrade"
+   1. Tek ışık kaynağı: her zaman YUKARIDAN. Açık ton üstte, koyu ton altta. Hiçbir yüzey ters ışık almaz.
+   2. Tek renk ailesi: degrade kendi ailesinin 300 → 500 → 700 tonlarında kalır (turuncu, altın, mürekkep).
+      Aileden aileye geçen (turuncu→mor gibi) degrade yok.
+   3. Sahne ≠ yüzey: degrade yalnızca SAHNEDE (bölüm zemini, arena ışığı) ve logodaki malzemeyi taşıyan
+      kabartmalarda (düğme, rozet). Okunan yüzeyler (kart, soru kutusu) düz renk kalır.
+   4. Bantlaşma yok: büyük degradelerin üstünde ince gren var.
+   Kontur her zaman mürekkep #2A1406, asla #000. Kırmızı yalnızca Dento'nun bandanasında ve YAKINDA rozetinde.
+   Lilita One'da ğ ş ı İ yok → yalnızca rakam/ASCII; Türkçe başlık Poppins 800. */
+
+@font-face { font-family: "Poppins"; font-weight: 500; font-display: swap; src: url(../fonts/poppins-500.woff) format("woff"); }
+@font-face { font-family: "Poppins"; font-weight: 600; font-display: swap; src: url(../fonts/poppins-600.woff) format("woff"); }
+@font-face { font-family: "Poppins"; font-weight: 700; font-display: swap; src: url(../fonts/poppins-700.woff) format("woff"); }
+@font-face { font-family: "Poppins"; font-weight: 800; font-display: swap; src: url(../fonts/poppins-800.woff) format("woff"); }
+@font-face { font-family: "Lilita One"; font-display: swap; src: url(../fonts/lilita-one.woff) format("woff"); }
+
+:root {
+  --ink: #2A1406; --ink-soft: #4A3A2C; --ink-deep: #1A0C03;
+  --or-300: #FFB547; --or: #FF6B00; --or-700: #C94C00; --ember: #7A1E0E;
+  --gold-300: #FFD24A; --gold: #F2B21E; --gold-700: #C98A12;
+  --enamel: #FFFFFF; --enamel-s: #D8E2EB;
+  --glass: #5FAFE6; --cream: #FFF3E4; --peach: #FDEBD8;
+
+  /* sahneler: ışık yukarıdan, tek aile */
+  --g-arena: radial-gradient(130% 100% at 50% -15%, #FFB547 0%, #FF8A2B 26%, #FF6B00 54%, #E85E00 80%, #C94C00 100%);
+  --g-ink: radial-gradient(110% 80% at 50% -10%, #4A3A2C 0%, #2A1406 60%, #1A0C03 100%);
+  --g-gold: linear-gradient(180deg, #FFD24A 0%, #F2B21E 55%, #E0A217 100%);
+  --g-cream: linear-gradient(180deg, #FFF8EE 0%, #FFF3E4 60%, #FDEBD8 100%);
+  /* kabartma malzemesi (düğme): logodaki WARS yazısıyla aynı ışık */
+  --m-gold: linear-gradient(180deg, #FFE08A 0%, #FFD24A 45%, #F2B21E 55%, #E0A217 100%);
+  --m-ink: linear-gradient(180deg, #4A3A2C 0%, #2A1406 100%);
+
+  --line: 3px; --lift: 7px; --r: 22px;
+  --wrap: 1160px; --gutter: clamp(16px, 4vw, 40px);
+  --spring: cubic-bezier(.34, 1.56, .64, 1);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body {
+  margin: 0; background: var(--cream); color: var(--ink);
+  font: 500 17px/1.6 "Poppins", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased; overflow-x: hidden;
+}
+img, svg { display: block; max-width: 100%; }
+img { height: auto; }
+h1, h2, h3, p { margin: 0; }
+a { color: inherit; }
+button { font: inherit; color: inherit; }
+
+/* eğik kayan bant ve uçuşan ögeler yatay kaydırma yaratmasın */
+main { overflow-x: hidden; overflow-x: clip; }
+.wrap { width: min(100%, var(--wrap)); margin-inline: auto; padding-inline: var(--gutter); }
+.skip { position: absolute; left: 12px; top: -60px; z-index: 50; background: var(--ink); color: var(--enamel); padding: 10px 16px; border-radius: 12px; }
+.skip:focus { top: 12px; }
+:focus-visible { outline: 3px solid var(--glass); outline-offset: 3px; border-radius: 10px; }
+
+/* gren: degrade bantlaşmasını kırar */
+.sec--arena, .hero, .sec--ink, .sec--gold { position: relative; isolation: isolate; }
+.sec--arena::after, .hero::after, .sec--ink::after, .sec--gold::after {
+  content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; opacity: .14; mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .16  0 0 0 0 .08  0 0 0 0 .02  0 0 0 .9 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+
+/* ---------- tipografi ---------- */
+.kicker { font-weight: 700; font-size: 14px; letter-spacing: .18em; text-transform: uppercase; margin-bottom: 14px; }
+.kicker--or { color: var(--or-700); }
+.kicker--gold { color: var(--gold); }
+.sec__title {
+  font-weight: 800; font-size: clamp(30px, 4.6vw, 52px); line-height: 1.08; letter-spacing: -.025em;
+  max-width: 18ch; margin-bottom: clamp(24px, 3.4vw, 40px);
+}
+/* beyaz başlık + mürekkep kontur (logodaki DENTA malzemesi). Kontur çizginin ortasına basılır →
+   harf arası açık tutulur, yoksa harfler yapışır. */
+.sec__title--light {
+  color: var(--enamel); letter-spacing: .005em; word-spacing: .08em;
+  -webkit-text-stroke: .11em var(--ink); paint-order: stroke fill; text-shadow: 0 .07em 0 var(--ink);
+}
+.sec--ink .sec__title--light { -webkit-text-stroke: 0; text-shadow: none; letter-spacing: -.025em; word-spacing: 0; }
+.sec__lead { font-weight: 600; font-size: 18px; max-width: 38ch; margin-bottom: 24px; }
+
+/* ---------- düğme: Clash kabartması, basınca iner ---------- */
+.btn {
+  position: relative; display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  min-height: 56px; padding: 0 28px; cursor: pointer;
+  background: var(--m-gold); color: var(--ink);
+  border: var(--line) solid var(--ink); border-radius: 18px;
+  box-shadow: 0 var(--lift) 0 var(--ink), inset 0 2px 0 rgba(255, 255, 255, .55);
+  font-weight: 800; font-size: 17px; letter-spacing: .01em; text-decoration: none; white-space: nowrap;
+  transition: transform .09s ease, box-shadow .09s ease, filter .15s ease;
+}
+.btn:hover { filter: brightness(1.06); transform: translateY(-2px); box-shadow: 0 calc(var(--lift) + 2px) 0 var(--ink), inset 0 2px 0 rgba(255, 255, 255, .55); }
+.btn:active { transform: translateY(5px); box-shadow: 0 2px 0 var(--ink), inset 0 2px 0 rgba(255, 255, 255, .4); }
+.btn--big { min-height: 64px; padding: 0 34px; font-size: 19px; border-radius: 20px; }
+.btn--small { min-height: 44px; padding: 0 18px; font-size: 15px; border-radius: 14px; box-shadow: 0 5px 0 var(--ink), inset 0 2px 0 rgba(255,255,255,.55); }
+.btn--small:active { transform: translateY(3px); box-shadow: 0 2px 0 var(--ink); }
+.btn--ink { background: var(--m-ink); color: var(--enamel); box-shadow: 0 var(--lift) 0 var(--ink-deep), inset 0 2px 0 rgba(255, 255, 255, .12); }
+.btn--ink:hover { box-shadow: 0 calc(var(--lift) + 2px) 0 var(--ink-deep), inset 0 2px 0 rgba(255,255,255,.12); }
+.btn--ink:active { box-shadow: 0 2px 0 var(--ink-deep); }
+.btn--ghost { background: var(--cream); color: var(--ink); box-shadow: 0 var(--lift) 0 var(--ink), inset 0 2px 0 #fff; }
+.btn--ghost:hover { background: #fff; }
+/* altın büyük düğmede ara ara geçen parıltı */
+.btn--big:not(.btn--ink)::after {
+  content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none;
+  background: linear-gradient(105deg, transparent 35%, rgba(255, 255, 255, .7) 50%, transparent 65%) -150% 0 / 250% 100% no-repeat;
+  animation: shine 4.5s ease-in-out 3s infinite;
+}
+@keyframes shine { 0%, 70% { background-position: -150% 0; } 100% { background-position: 150% 0; } }
+
+/* ---------- üst bar ---------- */
+.top { position: sticky; top: 0; z-index: 30; background: var(--or); border-bottom: var(--line) solid var(--ink); transition: box-shadow .2s ease; }
+.top.is-scrolled { box-shadow: 0 6px 0 rgba(42, 20, 6, .18); }
+.top__in { display: flex; align-items: center; justify-content: space-between; height: 72px; transition: height .2s ease; }
+.top.is-scrolled .top__in { height: 60px; }
+.top__logo img { width: 140px; transition: width .2s ease; }
+.top.is-scrolled .top__logo img { width: 118px; }
+.top__act { display: flex; align-items: center; gap: 12px; position: relative; }
+
+.snd {
+  display: inline-flex; align-items: center; gap: 8px; height: 44px; padding: 0 14px 0 12px; cursor: pointer;
+  background: var(--or-300); border: var(--line) solid var(--ink); border-radius: 14px; box-shadow: 0 5px 0 var(--ink);
+  font-weight: 800; font-size: 15px; transition: transform .09s, box-shadow .09s, background-color .15s;
+}
+.snd:active { transform: translateY(3px); box-shadow: 0 2px 0 var(--ink); }
+.snd__ico { width: 22px; height: 22px; fill: none; stroke: var(--ink); stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+.snd__body { fill: var(--ink); }
+.snd__on { display: none; }
+.snd.is-on { background: var(--m-gold); }
+.snd.is-on .snd__on { display: block; animation: wave 1.2s ease-in-out infinite; }
+.snd.is-on .snd__off { display: none; }
+@keyframes wave { 50% { opacity: .45; } }
+.snd__hint {
+  position: absolute; top: calc(100% + 14px); right: 138px; width: max-content; max-width: 220px;
+  background: var(--ink); color: var(--enamel); font-weight: 700; font-size: 13px; line-height: 1.35;
+  padding: 10px 14px; border-radius: 12px; animation: hint-in .4s var(--spring) both;
+}
+.snd__hint[hidden] { display: none; }
+.snd__hint::before { content: ""; position: absolute; top: -7px; right: 44px; border: 8px solid transparent; border-top: 0; border-bottom-color: var(--ink); }
+@keyframes hint-in { from { opacity: 0; transform: translateY(-8px) scale(.9); } }
+
+/* ---------- kahraman: arena ---------- */
+.hero { background: var(--g-arena); overflow: hidden; --px: 0; --py: 0; }
+/* dönen ışınlar: yukarıdan gelen ışığın kaynağında, kenara doğru söner */
+.hero__rays {
+  position: absolute; z-index: -1; left: 50%; top: -55%; width: 190vmax; height: 190vmax; translate: -50% 0;
+  background: repeating-conic-gradient(from 0deg, rgba(255, 210, 74, .22) 0deg 7deg, transparent 7deg 22.5deg);
+  -webkit-mask: radial-gradient(closest-side, #000 8%, transparent 62%); mask: radial-gradient(closest-side, #000 8%, transparent 62%);
+  animation: spin 80s linear infinite;
+}
+.hero__glow {
+  position: absolute; z-index: -1; right: 4%; top: 12%; width: min(720px, 70vw); aspect-ratio: 1; border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(255, 224, 138, .5) 0%, rgba(255, 181, 71, .22) 45%, rgba(255, 181, 71, 0) 100%);
+  translate: calc(var(--px) * 30px) calc(var(--py) * 30px);
+}
+@keyframes spin { to { rotate: 360deg; } }
+.hero__dust { position: absolute; inset: 0; z-index: -1; pointer-events: none; overflow: hidden; }
+.hero__dust i {
+  position: absolute; bottom: -20px; width: 10px; height: 10px; scale: var(--s);
+  background: var(--gold-300); clip-path: polygon(50% 0, 62% 38%, 100% 50%, 62% 62%, 50% 100%, 38% 62%, 0 50%, 38% 38%);
+  animation: rise var(--dur) linear var(--del) infinite; opacity: 0;
+}
+@keyframes rise { 10% { opacity: .9; } 85% { opacity: .7; } 100% { transform: translate(var(--x), -110vh) rotate(260deg); opacity: 0; } }
+
+.hero__in {
+  display: grid; grid-template-columns: 1.3fr .7fr; align-items: center; gap: clamp(24px, 4vw, 56px);
+  padding-block: clamp(36px, 6vw, 84px) clamp(64px, 8vw, 112px);
+}
+.hero .kicker { color: var(--ink); }
+.hero__title {
+  font-weight: 800; font-size: clamp(29px, 4.3vw, 58px); line-height: 1.08; letter-spacing: .005em; word-spacing: .08em;
+  color: var(--enamel); -webkit-text-stroke: .11em var(--ink); paint-order: stroke fill; text-shadow: 0 .08em 0 var(--ink);
+  margin-bottom: 22px;
+}
+.hero__title .line { display: block; }
+.hero__lead { font-weight: 600; font-size: clamp(17px, 1.6vw, 20px); max-width: 34ch; margin-bottom: 30px; }
+.hero__cta { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 26px; }
+.hero__art { display: flex; justify-content: center; }
+.hero__stage {
+  all: unset; display: block; width: min(100%, 500px); cursor: pointer; border-radius: 24px;
+  translate: calc(var(--px) * -18px) calc(var(--py) * -14px); transition: translate .3s ease-out;
+}
+.hero__stage:focus-visible { outline: 3px solid var(--glass); outline-offset: 6px; }
+.hero__logo { width: 100%; height: auto; overflow: visible; filter: drop-shadow(0 18px 0 rgba(42, 20, 6, .22)); }
+/* JS varken logo, intro ilk kareyi kurana kadar gizli (yoksa hazır logo bir an görünüp kaybolur).
+   intro.js hiç çalışmazsa 2,5 sn sonra yine görünür. */
+.js .hero__logo { opacity: 0; animation: show .01s 2.5s forwards; }
+.js.hero-ready .hero__logo { opacity: 1; animation: none; }
+.js.hero-ready.hero-go .hero__logo { animation: float 5s ease-in-out 2.8s infinite; }
+@keyframes show { to { opacity: 1; } }
+
+/* metin girişi */
+.js .in { opacity: 0; transform: translateY(22px); animation: up .01s 2.5s forwards; }
+.js.hero-go .in { animation: up .6s var(--spring) var(--d, 0s) forwards; }
+@keyframes up { to { opacity: 1; transform: none; } }
+
+.stores { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 12px; }
+.store { display: inline-flex; align-items: center; gap: 10px; padding: 9px 14px 9px 16px; border: var(--line) solid var(--ink); border-radius: 14px; background: rgba(255, 243, 228, .9); }
+.store__name { font-weight: 700; font-size: 15px; }
+.store__tag { font-weight: 800; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; background: var(--ink); color: var(--enamel); padding: 4px 8px; border-radius: 8px; }
+
+/* ---------- kayan bant ---------- */
+.ticker {
+  position: relative; z-index: 2; overflow: hidden; background: var(--ink); color: var(--gold-300);
+  rotate: -1.6deg; margin: -22px -24px -10px; padding-block: 14px; box-shadow: 0 8px 0 var(--or-700);
+}
+.ticker__track { display: flex; width: max-content; gap: 28px; align-items: center; animation: marquee 32s linear infinite; }
+.ticker span { font-weight: 800; font-size: clamp(18px, 2.2vw, 26px); text-transform: uppercase; letter-spacing: .04em; white-space: nowrap; }
+.ticker i { font-style: normal; color: var(--or); font-size: 22px; }
+@keyframes marquee { to { transform: translateX(-50%); } }
+
+/* ---------- bölümler ---------- */
+.sec { padding-block: clamp(72px, 9vw, 124px); }
+.sec + .sec { border-top: var(--line) solid var(--ink); }
+.sec--cream { background: var(--g-cream); }
+.sec--arena { background: var(--g-arena); overflow: hidden; }
+.sec--ink { background: var(--g-ink); color: var(--enamel); }
+.sec--gold { background: var(--g-gold); }
+
+/* okunan yüzeyler düz: beyaz + kontur + düz alt gölge */
+.card, .step { background: var(--enamel); border: var(--line) solid var(--ink); border-radius: var(--r); box-shadow: 0 var(--lift) 0 var(--ink); padding: clamp(24px, 3vw, 36px); }
+.card p, .step p { color: var(--ink-soft); }
+.tilt { --rx: 0deg; --ry: 0deg; rotate: none; transform: perspective(900px) rotateX(var(--rx)) rotateY(var(--ry)); }
+.tilt.is-in { transition: transform .25s ease-out, opacity .55s ease; }
+
+.duo { display: grid; grid-template-columns: repeat(2, 1fr); gap: clamp(20px, 3vw, 32px); }
+.card { position: relative; padding-top: 28px; }
+.card__dento { width: 170px; margin: -24px 0 0 -24px; }
+.card__title { font-weight: 800; font-size: 28px; letter-spacing: -.02em; margin-bottom: 10px; }
+.bob { animation: bob 3.2s ease-in-out infinite; transform-origin: 50% 90%; }
+.card:nth-child(2) .bob { animation-delay: -1.6s; }
+.card:hover .bob { animation: hop .5s var(--spring); }
+@keyframes bob { 50% { transform: translateY(-8px) rotate(-2deg); } }
+@keyframes hop { 40% { transform: translateY(-22px) scale(1.06, .96); } 70% { transform: translateY(0) scale(.96, 1.05); } }
+@keyframes float { 50% { transform: translateY(-12px); } }
+
+/* adımlar: numara damga gibi iner */
+.steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(20px, 2.6vw, 28px); }
+.step__no {
+  display: inline-block; font-family: "Lilita One", "Poppins", sans-serif; font-size: 72px; line-height: 1;
+  color: var(--or); -webkit-text-stroke: 7px var(--ink); paint-order: stroke fill; margin-bottom: 12px; text-shadow: 0 6px 0 var(--ink);
+}
+.step__title { font-weight: 800; font-size: 22px; letter-spacing: -.015em; margin-bottom: 8px; }
+
+/* modlar: Clash kart dili */
+.modes { display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(16px, 2.4vw, 24px); }
+.mode {
+  --rx: 0deg; --ry: 0deg;
+  display: flex; flex-direction: column; align-items: center; text-align: center; cursor: pointer;
+  background: linear-gradient(180deg, #5A4636 0%, #4A3A2C 60%, #3E2F22 100%);
+  border: var(--line) solid var(--or); border-radius: var(--r);
+  box-shadow: 0 var(--lift) 0 var(--or-700), inset 0 2px 0 rgba(255, 255, 255, .1);
+  padding: 18px 20px 26px;
+  transform: perspective(900px) rotateX(var(--rx)) rotateY(var(--ry));
+  transition: transform .25s ease-out, box-shadow .2s ease, border-color .2s ease;
+}
+.mode:hover { border-color: var(--gold); box-shadow: 0 var(--lift) 0 var(--gold-700), 0 0 0 6px rgba(242, 178, 30, .18); }
+.mode img { width: 170px; margin: -8px auto 0; transition: transform .3s var(--spring); }
+.mode:hover img { transform: translateY(-8px) scale(1.06); }
+.mode.jump img { animation: jump .7s var(--spring); }
+@keyframes jump { 30% { transform: translateY(-38px) rotate(-8deg) scale(1.1); } 60% { transform: translateY(0) scale(1.08, .92); } 80% { transform: scale(.97, 1.04); } }
+.mode__title { display: block; font-weight: 800; font-size: 20px; color: var(--gold); margin-bottom: 6px; }
+.mode__txt { display: block; font-size: 15px; line-height: 1.55; color: var(--peach); font-weight: 500; }
+
+.final { display: grid; grid-template-columns: auto 1fr; align-items: center; gap: clamp(20px, 4vw, 56px); }
+.final__dento { width: clamp(150px, 20vw, 240px); }
+.final .sec__title { margin-bottom: 14px; }
+.final__lead { font-weight: 600; font-size: 18px; max-width: 40ch; margin-bottom: 28px; }
+.badge {
+  display: inline-block; margin-bottom: 18px; padding: 8px 18px; rotate: -4deg;
+  background: linear-gradient(180deg, #F0544A 0%, #E8352A 55%, #B51F16 100%); color: var(--enamel);
+  border: var(--line) solid var(--ink); border-radius: 14px; box-shadow: 0 5px 0 var(--ink);
+  font-weight: 800; font-size: 18px; letter-spacing: .12em; text-transform: uppercase;
+}
+
+/* ---------- mini tur ---------- */
+.quiz-wrap { display: grid; grid-template-columns: .9fr 1.1fr; gap: clamp(28px, 5vw, 72px); align-items: center; }
+.quiz-intro__dento { width: clamp(150px, 18vw, 220px); margin-top: 8px; animation: bob 3s ease-in-out infinite; }
+.quiz {
+  position: relative; min-height: 440px; background: var(--enamel);
+  border: var(--line) solid var(--ink); border-radius: 28px; box-shadow: 0 10px 0 var(--ink);
+  padding: clamp(22px, 3vw, 34px); overflow: hidden;
+}
+.quiz.is-shake { animation: shake .45s ease; }
+@keyframes shake { 20%, 60% { transform: translateX(-9px); } 40%, 80% { transform: translateX(9px); } }
+.quiz.is-win { animation: winpulse .5s var(--spring); }
+@keyframes winpulse { 40% { transform: scale(1.025); } }
+.quiz__screen { display: none; }
+.quiz__screen.is-on { display: block; animation: screen-in .45s var(--spring); }
+@keyframes screen-in { from { opacity: 0; transform: translateY(16px) scale(.98); } }
+.quiz__screen[data-screen="start"], .quiz__screen[data-screen="end"] { text-align: center; padding-top: 28px; }
+.quiz__tag { display: inline-block; font-weight: 800; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; background: var(--peach); color: var(--or-700); padding: 6px 12px; border-radius: 10px; margin-bottom: 22px; }
+.quiz__big { font-weight: 800; font-size: clamp(30px, 3.6vw, 42px); letter-spacing: -.025em; line-height: 1.1; margin-bottom: 12px; }
+.quiz__small { color: var(--ink-soft); max-width: 34ch; margin: 0 auto 28px; }
+.quiz__head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+.quiz__count { font-family: "Lilita One", "Poppins", sans-serif; font-size: 26px; color: var(--or); -webkit-text-stroke: 4px var(--ink); paint-order: stroke fill; }
+.quiz__streak { font-weight: 800; font-size: 13px; letter-spacing: .08em; background: var(--m-gold); border: 2px solid var(--ink); border-radius: 10px; padding: 4px 10px; animation: hint-in .4s var(--spring); }
+.quiz__streak[hidden] { display: none; }
+.quiz__timer { height: 14px; border: var(--line) solid var(--ink); border-radius: 10px; background: var(--peach); overflow: hidden; margin-bottom: 22px; }
+.quiz__timer span { display: block; height: 100%; background: linear-gradient(180deg, #FFD24A 0%, #F2B21E 100%); transform-origin: left; }
+.quiz__timer.is-low span { background: linear-gradient(180deg, #FF8A2B 0%, #FF6B00 100%); animation: wave .5s ease-in-out infinite; }
+.quiz__q { font-weight: 800; font-size: clamp(21px, 2.3vw, 26px); line-height: 1.3; letter-spacing: -.01em; margin-bottom: 20px; min-height: 2.6em; }
+.quiz__opts { display: grid; gap: 12px; }
+.opt {
+  all: unset; box-sizing: border-box; display: flex; align-items: center; gap: 14px; cursor: pointer;
+  min-height: 58px; padding: 8px 16px 8px 10px; background: var(--cream);
+  border: var(--line) solid var(--ink); border-radius: 16px; box-shadow: 0 5px 0 var(--ink);
+  font-weight: 700; font-size: 17px; transition: transform .09s, box-shadow .09s, background-color .15s;
+  animation: opt-in .4s var(--spring) both;
+}
+@keyframes opt-in { from { opacity: 0; transform: translateX(24px); } }
+.opt:hover:not(:disabled) { background: var(--peach); transform: translateY(-2px); box-shadow: 0 7px 0 var(--ink); }
+.opt:active:not(:disabled) { transform: translateY(4px); box-shadow: 0 1px 0 var(--ink); }
+.opt:focus-visible { outline: 3px solid var(--glass); outline-offset: 3px; }
+.opt:disabled { cursor: default; }
+.opt__k { flex: none; display: grid; place-items: center; width: 38px; height: 38px; border-radius: 11px; background: var(--enamel); border: 2px solid var(--ink); font-weight: 800; }
+/* doğru = altın, yanlış = soluk; renk tek başına anlam taşımaz → ✓ / ✕ işareti de var */
+.opt.is-right { background: var(--m-gold); animation: right-pop .45s var(--spring); }
+.opt.is-right .opt__k, .opt.is-wrong .opt__k { font-size: 0; }
+.opt.is-right .opt__k::after { content: "✓"; font-size: 20px; }
+.opt.is-wrong { background: #EDE3D8; color: #8A7A6A; box-shadow: 0 2px 0 var(--ink); transform: translateY(3px); }
+.opt.is-wrong .opt__k::after { content: "✕"; font-size: 18px; color: var(--ink); }
+@keyframes right-pop { 40% { transform: scale(1.04); } }
+.quiz__stars { display: flex; justify-content: center; align-items: flex-end; gap: 10px; margin-bottom: 18px; }
+.quiz__stars svg { width: 64px; height: 64px; }
+.quiz__stars svg:nth-child(2) { width: 84px; height: 84px; margin-bottom: 12px; }
+.quiz__stars path { fill: #EDE3D8; stroke: var(--ink); stroke-width: 6; stroke-linejoin: round; }
+.quiz__stars svg.is-lit { animation: star-in .55s var(--spring) both; }
+.quiz__stars svg.is-lit path { fill: var(--gold-300); }
+@keyframes star-in { from { transform: scale(0) rotate(-40deg); } }
+.quiz__endcta { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; }
+.fly {
+  position: absolute; z-index: 40; pointer-events: none;
+  font-family: "Lilita One", "Poppins", sans-serif; font-size: 34px; color: var(--gold-300);
+  -webkit-text-stroke: 5px var(--ink); paint-order: stroke fill; animation: fly 1s ease-out forwards;
+}
+@keyframes fly { from { transform: translateY(0) scale(.6); opacity: 0; } 20% { transform: translateY(-14px) scale(1.15); opacity: 1; } to { transform: translateY(-70px) scale(1); opacity: 0; } }
+
+/* ---------- alt bilgi ---------- */
+.foot { background: var(--ink-deep); color: var(--peach); border-top: var(--line) solid var(--ink); }
+.foot__in { display: flex; align-items: center; gap: 24px; padding-block: 32px; font-size: 14px; }
+.foot__in img { width: 104px; flex: none; }
+.foot__in p { flex: 1; }
+.foot__in a { font-weight: 700; color: var(--gold); text-decoration: none; }
+.foot__in a:hover { text-decoration: underline; }
+
+.confetti { position: fixed; inset: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 60; }
+
+/* ---------- kaydırınca giriş ---------- */
+.js .reveal { opacity: 0; translate: 0 26px; transition: opacity .55s ease, translate .6s var(--spring); }
+.js .reveal.is-in { opacity: 1; translate: 0 0; }
+.js .stamp { opacity: 0; }
+.js .stamp.is-in { animation: card-up .55s var(--spring) both; }
+.js .stamp.is-in .step__no { animation: slam .5s cubic-bezier(.5, 0, .75, 0) both; animation-delay: inherit; }
+@keyframes card-up { from { opacity: 0; transform: translateY(40px) rotate(-2deg); } to { opacity: 1; transform: none; } }
+@keyframes slam { 0% { transform: scale(2.6) rotate(-14deg); opacity: 0; } 60% { transform: scale(1) rotate(0); opacity: 1; } 75% { transform: scale(1.12, .88); } 100% { transform: none; opacity: 1; } }
+.js .flip { opacity: 0; }
+.js .flip.is-in { animation: flip .7s var(--spring) both; }
+@keyframes flip { from { opacity: 0; transform: perspective(900px) rotateY(-80deg) translateY(30px); } to { opacity: 1; } }
+.js .pop-in { scale: 0; }
+.js .pop-in.is-in { animation: pop .6s var(--spring) both; }
+@keyframes pop { from { scale: 0; } to { scale: 1; } }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+  .hero__rays, .ticker__track, .hero__dust { animation: none !important; }
+  .js .reveal, .js .stamp, .js .flip, .js .in, .js .hero__logo { opacity: 1; transform: none; translate: none; }
+  .js .pop-in { scale: 1; }
+}
+
+/* ---------- daralma ---------- */
+@media (max-width: 980px) {
+  .modes { grid-template-columns: repeat(2, 1fr); }
+  .steps { grid-template-columns: 1fr; }
+  .quiz-wrap { grid-template-columns: 1fr; }
+  .quiz-intro__dento { display: none; }
+}
+@media (max-width: 820px) {
+  .hero__in { grid-template-columns: 1fr; }
+  .hero__art { order: -1; }
+  .hero__stage { width: min(88%, 380px); }
+  .duo { grid-template-columns: 1fr; }
+}
+@media (max-width: 560px) {
+  .modes { grid-template-columns: 1fr; }
+  .mode { flex-direction: row; align-items: center; text-align: left; gap: 10px; padding: 12px 16px 12px 8px; }
+  .mode img { width: 104px; flex: none; margin: 0; }
+  .mode:hover img { transform: none; }
+  .final { grid-template-columns: 1fr; }
+  .final__dento { width: 150px; }
+  .foot__in { flex-direction: column; align-items: flex-start; gap: 14px; }
+  .hero__cta .btn, .quiz__endcta .btn, .final .btn { width: 100%; }
+  .snd__txt { display: none; }
+  .snd { padding: 0 10px; }
+  .snd__hint { right: 0; }
+  .snd__hint::before { right: 60px; }
+  .quiz { min-height: 470px; }
+}
