@@ -517,14 +517,16 @@ main { overflow-x: hidden; overflow-x: clip; }
 .cap b { font-weight: 800; font-size: clamp(28px, 4.4vw, 54px); line-height: 1.05; letter-spacing: -.025em; }
 .cap span { font-weight: 600; font-size: clamp(15px, 1.6vw, 19px); color: var(--peach); opacity: .8; }
 .cap--end b { color: var(--gold-300); text-shadow: 0 .07em 0 var(--or-700); font-size: clamp(26px, 4vw, 50px); }
-.story__ctrl { display: flex; align-items: center; justify-content: center; gap: 18px; min-height: 44px; }
+/* çizgiler kendi satırında hep ortada; düğmeler altta, yüksekliği ayrılmış satırda → hiçbir şey kaymaz */
+.story__ctrl { display: flex; flex-direction: column; align-items: center; gap: 16px; }
+.story__btns { display: flex; justify-content: center; align-items: center; gap: 12px; min-height: 42px; }
 .story__dots { display: flex; gap: 8px; }
 .story__dots button { all: unset; cursor: pointer; width: 34px; height: 8px; border-radius: 6px; background: rgba(253, 235, 216, .2); transition: background-color .3s, transform .2s; }
 .story__dots button:hover { transform: scaleY(1.6); }
 .story__dots button:focus-visible { outline: 3px solid var(--glass); outline-offset: 4px; }
 .story__dots button.is-on { background: var(--or); }
-.story__replay { all: unset; cursor: pointer; font-weight: 800; font-size: 14px; color: var(--gold); padding: 8px 14px; border: 2px solid var(--gold); border-radius: 12px; opacity: 0; pointer-events: none; transition: opacity .3s; }
-.story.is-done .story__replay { opacity: 1; pointer-events: auto; }
+.story__replay { all: unset; cursor: pointer; font-weight: 800; font-size: 14px; color: var(--gold); padding: 8px 14px; border: 2px solid var(--gold); border-radius: 12px; display: none; }
+.story.is-done .story__replay { display: inline-block; animation: hint-in .4s var(--spring); }
 .story__replay:hover { background: rgba(242, 178, 30, .15); }
 .story__replay:focus-visible { outline: 3px solid var(--glass); outline-offset: 3px; }
 /* hareket azaltılmışsa ya da JS yoksa: sabit sahne + bütün başlıklar alt alta */
@@ -551,4 +553,3 @@ html:not(.js) .story__stage { display: none; }
 .story__sound:active { transform: translateY(3px); box-shadow: 0 1px 0 var(--or-700); }
 .story__sound:focus-visible { outline: 3px solid var(--glass); outline-offset: 3px; }
 .story__sound[hidden] { display: none; }
-@media (max-width: 560px) { .story__ctrl { flex-wrap: wrap; gap: 12px; } }
