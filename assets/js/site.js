@@ -142,24 +142,6 @@
     items.forEach(function (el) { io.observe(el); });
   }
 
-  // ---------- manifesto: satır ekranın ortasından geçince yanar ----------
-  var lines = $$(".mline");
-  if (lines.length) {
-    if (reduce || !("IntersectionObserver" in window)) lines.forEach(function (l) { l.classList.add("is-lit"); });
-    else {
-      var lio = new IntersectionObserver(function (entries) {
-        entries.forEach(function (e) {
-          if (!e.isIntersecting || e.target.classList.contains("is-lit")) return;
-          e.target.classList.add("is-lit"); lio.unobserve(e.target);
-          var k = lines.indexOf(e.target);
-          if (e.target.classList.contains("mline--end")) S.play("sparkle", 0, { gain: 0.2 });
-          else S.play("pop", 0, { f0: 260 + k * 30, f1: 700 + k * 60, gain: 0.18 });
-        });
-      }, { rootMargin: "-38% 0px -38% 0px" });
-      lines.forEach(function (l) { lio.observe(l); });
-    }
-  }
-
   // ---------- sık sorulanlar: açılınca ses ----------
   $$(".faq details").forEach(function (d) {
     d.addEventListener("toggle", function () { if (d.open) S.play("pop", 0, { f0: 420, f1: 900, gain: 0.2 }); });

@@ -30,6 +30,7 @@
   <script>document.documentElement.classList.add("js")</script>
   <script src="/assets/js/sfx.js" defer></script>
   <script src="/assets/js/intro.js" defer></script>
+  <script src="/assets/js/story.js" defer></script>
   <script src="/assets/js/site.js" defer></script>
 </head>
 <body>
@@ -143,21 +144,83 @@
       </div>
     </section>
 
-    <!-- 3 · Neden varız: manifesto, satır satır -->
-    <section class="sec sec--ink manifesto" aria-labelledby="neden">
-      <div class="wrap">
-        <p class="kicker kicker--gold">Neden varız</p>
-        <h2 id="neden" class="sec__title sec__title--light">Diş hekimliği bilgisi, oyun oldu.</h2>
-        <p class="manifesto__intro reveal">Diş hekimliği beş yıllık, ağır bir eğitim. Kitaplar kalın, ders araları uzun. Öğreten uygulamalar var ama eğlendirmiyor; eğlendiren oyunlar var ama hiçbir şey öğretmiyor. DentaWars'ı ikisini birden yapmak için sektörün içinden gelen bir ekip kuruyor.</p>
-        <ol class="manifesto__lines">
-          <li class="mline">Fakültenin koridorunda bir ses var: zar sesi, taş sesi, “bir el daha”.</li>
-          <li class="mline">O sesi değiştirmek istemiyoruz. Masanın üstündekini değiştirmek istiyoruz.</li>
-          <li class="mline">Bir film, bir vaka, bir terim. Arkadaşınla kapışırsın, kaybedersin, rövanş istersin.</li>
-          <li class="mline">Yanlışın kaybolmaz: deftere yazılır, kontrole çağrılır.</li>
-          <li class="mline">Unvanını kazanırsın. Çalışmazsan geri alınır.</li>
-          <li class="mline">Mezun olunca da bitmez. Hekim de oynar, hoca da.</li>
-          <li class="mline mline--end">Ders arasında oyna, klinikte hatırla.</li>
+    <!-- 3 · Neden varız: kaydırdıkça oynayan motion hikâye (story.js) -->
+    <section class="story" id="neden" aria-labelledby="neden-baslik">
+      <div class="story__pin">
+        <div class="wrap story__head">
+          <p class="kicker kicker--gold">Neden varız</p>
+          <h2 id="neden-baslik" class="sr-only">Neden varız: ders arasında oyna, klinikte hatırla</h2>
+        </div>
+        <svg class="story__stage" id="storyStage" viewBox="0 -30 1000 600" aria-hidden="true">
+          <defs>
+            <radialGradient id="stGlow" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#FFD24A" stop-opacity=".55"/><stop offset="1" stop-color="#FFD24A" stop-opacity="0"/></radialGradient>
+            <g id="stStar"><path d="M0 -40 L11 -12 L40 -11 L17 7 L25 36 L0 19 L-25 36 L-17 7 L-40 -11 L-11 -12Z" fill="#FFD24A" stroke="#2A1406" stroke-width="7" stroke-linejoin="round"/></g>
+          </defs>
+          <circle id="stHalo" cx="500" cy="280" r="300" fill="url(#stGlow)" opacity=".5"/>
+
+          <!-- A · ders arası: tavla -->
+          <g id="scA">
+            <g id="aBoard">
+              <rect x="250" y="250" width="500" height="200" rx="22" fill="#A8672C" stroke="#2A1406" stroke-width="7"/>
+              <rect x="268" y="266" width="464" height="168" rx="12" fill="#C98A12"/>
+              <path d="M500 266v168" stroke="#2A1406" stroke-width="6"/>
+              <g fill="#FFF3E4" stroke="#2A1406" stroke-width="3"><path d="M280 266h36l-18 64Z"/><path d="M352 266h36l-18 64Z"/><path d="M424 266h36l-18 64Z"/><path d="M540 266h36l-18 64Z"/><path d="M612 266h36l-18 64Z"/><path d="M684 266h36l-18 64Z"/></g>
+              <g fill="#FF6B00" stroke="#2A1406" stroke-width="3"><path d="M316 434h36l-18-64Z"/><path d="M388 434h36l-18-64Z"/><path d="M576 434h36l-18-64Z"/><path d="M648 434h36l-18-64Z"/></g>
+              <g stroke="#2A1406" stroke-width="4"><circle cx="298" cy="410" r="15" fill="#FFF3E4"/><circle cx="298" cy="380" r="15" fill="#FFF3E4"/><circle cx="702" cy="292" r="15" fill="#4A3A2C"/><circle cx="702" cy="322" r="15" fill="#4A3A2C"/></g>
+            </g>
+            <g id="aDie1"><rect x="-38" y="-38" width="76" height="76" rx="16" fill="#FFFFFF" stroke="#2A1406" stroke-width="6"/><g fill="#2A1406"><circle cx="-17" cy="-17" r="7"/><circle cx="17" cy="17" r="7"/><circle cx="0" cy="0" r="7"/></g></g>
+            <g id="aDie2"><rect x="-38" y="-38" width="76" height="76" rx="16" fill="#FFFFFF" stroke="#2A1406" stroke-width="6"/><g fill="#2A1406"><circle cx="-17" cy="-17" r="7"/><circle cx="17" cy="-17" r="7"/><circle cx="-17" cy="17" r="7"/><circle cx="17" cy="17" r="7"/><circle cx="0" cy="0" r="7"/><circle cx="-17" cy="0" r="0"/></g></g>
+          </g>
+
+          <!-- B · masadaki değişti: kartlar -->
+          <g id="scB">
+            <g id="bCard0"><rect x="-80" y="-110" width="160" height="220" rx="20" fill="#FFFFFF" stroke="#2A1406" stroke-width="7"/><use href="#i-film" x="-50" y="-70" width="100" height="100"/><rect x="-46" y="50" width="92" height="12" rx="6" fill="#FDEBD8"/></g>
+            <g id="bCard1"><rect x="-80" y="-110" width="160" height="220" rx="20" fill="#FFFFFF" stroke="#2A1406" stroke-width="7"/><use href="#i-case" x="-50" y="-70" width="100" height="100"/><rect x="-46" y="50" width="92" height="12" rx="6" fill="#FDEBD8"/></g>
+            <g id="bCard2"><rect x="-80" y="-110" width="160" height="220" rx="20" fill="#FFFFFF" stroke="#2A1406" stroke-width="7"/><use href="#i-ladder" x="-50" y="-70" width="100" height="100"/><rect x="-46" y="50" width="92" height="12" rx="6" fill="#FDEBD8"/></g>
+          </g>
+
+          <!-- C · kapış: düello -->
+          <g id="scC">
+            <g id="cLeft"><circle r="118" fill="#FF6B00" stroke="#2A1406" stroke-width="8"/><image href="/assets/img/maskot-duello.svg" x="-112" y="-118" width="224" height="224"/></g>
+            <g id="cRight"><circle r="118" fill="#7B3CFF" stroke="#2A1406" stroke-width="8"/>
+              <path d="M-62 30c-10-52 22-96 62-96s72 44 62 96c-6 28-30 40-62 40s-56-12-62-40Z" fill="#9B6BFF" stroke="#2A1406" stroke-width="7"/>
+              <circle cx="-22" cy="-8" r="13" fill="#FFFFFF" stroke="#2A1406" stroke-width="5"/><circle cx="24" cy="-8" r="13" fill="#FFFFFF" stroke="#2A1406" stroke-width="5"/><circle cx="-19" cy="-6" r="5" fill="#2A1406"/><circle cx="27" cy="-6" r="5" fill="#2A1406"/>
+              <path d="M-24 34q24 16 48 0" fill="none" stroke="#2A1406" stroke-width="6" stroke-linecap="round"/></g>
+            <g id="cVs"><text x="0" y="22" text-anchor="middle" class="st-vs">VS</text></g>
+            <g id="cSparks" fill="#FFD24A" stroke="#2A1406" stroke-width="4" stroke-linejoin="round"></g>
+            <g id="cScore"><rect x="-90" y="-34" width="180" height="68" rx="20" fill="#2A1406"/><text x="0" y="20" text-anchor="middle" class="st-score">3 – 2</text></g>
+          </g>
+
+          <!-- D · yanlış geri gelir -->
+          <g id="scD">
+            <g id="dBook"><rect x="-150" y="-90" width="300" height="180" rx="18" fill="#A8672C" stroke="#2A1406" stroke-width="7"/><rect x="-134" y="-76" width="128" height="152" rx="8" fill="#FFF3E4"/><rect x="6" y="-76" width="128" height="152" rx="8" fill="#FFF3E4"/><g stroke="#E0C9AE" stroke-width="4"><path d="M-118 -40h96M-118 -12h96M-118 16h96M22 -40h96M22 -12h96M22 16h96"/></g></g>
+            <g id="dCard"><rect x="-70" y="-90" width="140" height="180" rx="18" fill="#FFFFFF" stroke="#2A1406" stroke-width="7"/><g id="dMarkX"><circle r="34" fill="#EDE3D8" stroke="#2A1406" stroke-width="5"/><path d="M-14 -14l28 28M14 -14l-28 28" stroke="#2A1406" stroke-width="7" stroke-linecap="round"/></g><g id="dMarkOk" opacity="0"><circle r="34" fill="#FFD24A" stroke="#2A1406" stroke-width="5"/><path d="M-16 0l10 11 22-22" fill="none" stroke="#2A1406" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/></g></g>
+            <g id="dDays"><g id="dDay0"><rect x="-46" y="-30" width="92" height="60" rx="16" fill="#FF6B00" stroke="#2A1406" stroke-width="5"/><text x="0" y="12" text-anchor="middle" class="st-day">3</text></g><g id="dDay1"><rect x="-46" y="-30" width="92" height="60" rx="16" fill="#FF6B00" stroke="#2A1406" stroke-width="5"/><text x="0" y="12" text-anchor="middle" class="st-day">7</text></g><g id="dDay2"><rect x="-46" y="-30" width="92" height="60" rx="16" fill="#FF6B00" stroke="#2A1406" stroke-width="5"/><text x="0" y="12" text-anchor="middle" class="st-day">21</text></g></g>
+          </g>
+
+          <!-- E · yüksel: lig merdiveni -->
+          <g id="scE">
+            <g id="eSteps"></g>
+            <image id="eDento" href="/assets/img/maskot-lig.svg" width="150" height="150"/>
+          </g>
+
+          <!-- F · klinikte hatırla -->
+          <g id="scF">
+            <g id="fRays" fill="#FFD24A" opacity=".35"></g>
+            <g id="fTooth"><path d="M-96 -70c0-58 50-86 96-68 22 8 30 12 36 12s14-4 36-12c46-18 96 10 96 68 0 50-22 74-30 130-8 54-16 130-46 130-30 0-30-86-58-86s-28 86-58 86c-30 0-38-76-46-130-8-56-30-80-30-130Z" transform="translate(-36 0)" fill="#FFFFFF" stroke="#2A1406" stroke-width="9" stroke-linejoin="round"/><path d="M-90 -90q20-24 52-26" transform="translate(-36 0)" fill="none" stroke="#D8E2EB" stroke-width="10" stroke-linecap="round"/></g>
+            <use id="fStar0" href="#stStar"/><use id="fStar1" href="#stStar"/><use id="fStar2" href="#stStar"/>
+          </g>
+        </svg>
+
+        <ol class="story__caps" id="storyCaps">
+          <li class="cap is-on"><b>Ders arası.</b><span>Masada tavla, okey.</span></li>
+          <li class="cap"><b>Masadakini değiştirdik.</b><span>Bir film, bir vaka, bir terim.</span></li>
+          <li class="cap"><b>Kapış.</b><span>Kaybedersen rövanş iste.</span></li>
+          <li class="cap"><b>Yanlışın kaybolmaz.</b><span>Birkaç gün sonra geri gelir.</span></li>
+          <li class="cap"><b>Çalış, yüksel.</b><span>Bırakırsan geri düşersin.</span></li>
+          <li class="cap cap--end"><b>Ders arasında oyna, klinikte hatırla.</b><span>Mezun olunca da bitmez.</span></li>
         </ol>
+        <div class="story__dots" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
       </div>
     </section>
 
@@ -171,19 +234,19 @@
             <img class="card__dento bob" src="/assets/img/maskot-duello.svg" alt="" width="170" height="170">
             <p class="card__tag">Önce</p>
             <h3 class="card__title">Öğrenci</h3>
-            <p>1. sınıftan 5. sınıfa. Ders arasında, otobüste, sınav haftasında. Bütün sistem öğrenci için kuruldu.</p>
+            <p>1. sınıftan 5. sınıfa. Ders arasında, otobüste, sınav haftasında.</p>
           </article>
           <article class="card tilt reveal">
             <img class="card__dento bob" src="/assets/img/maskot-klinik.svg" alt="" width="170" height="170">
             <p class="card__tag">Sonra</p>
             <h3 class="card__title">Hekim</h3>
-            <p>Yeni mezun, DUS'a hazırlanan ya da yıllardır koltuğun başında. Bilgini tazele, meslektaşınla kapış.</p>
+            <p>Yeni mezun, DUS'a hazırlanan ya da yıllardır koltuğun başında. Bilgini tazele.</p>
           </article>
           <article class="card tilt reveal">
             <img class="card__dento bob" src="/assets/img/maskot-lig.svg" alt="" width="170" height="170">
             <p class="card__tag">Ve</p>
             <h3 class="card__title">Hoca</h3>
-            <p>Dersinde sınıfça açar, herkes aynı kodla girer, sonunda sınıf raporu hocaya gider. Kendi sorusunu havuza önerebilir.</p>
+            <p>Derste sınıfça açar, herkes aynı kodla girer. Sonunda sınıf raporu gelir.</p>
           </article>
         </div>
       </div>
@@ -241,7 +304,6 @@
           <button class="game flip" type="button" data-sfx="pop"><svg class="game__ico"><use href="#i-tray"/></svg><span class="game__t">Alet tepsisi</span><span class="game__d">60 saniyede tepsiden gelen aletleri tanı: bu nedir, hangi işlemde kullanılır?</span></button>
           <button class="game flip" type="button" data-sfx="pop"><svg class="game__ico"><use href="#i-talk"/></svg><span class="game__t">Masa oyunu</span><span class="game__d">Telefon masanın ortasında. Terimi yasaklı kelimelere girmeden takımına anlat; 60 saniye.</span></button>
         </div>
-        <p class="games__note">Oyunların adları yakında duyurulacak.</p>
       </div>
     </section>
 
@@ -281,26 +343,22 @@
           <article class="card tilt reveal">
             <img class="card__dento bob" src="/assets/img/maskot-solo.svg" alt="" width="170" height="170">
             <h3 class="card__title">Yeni oyun önce sizde</h3>
-            <p>Uygulama bütün fakültelere aynı gün açılır. Her yeni oyun ise genele açılmadan önce dönemin en aktif fakültesinde oynanır.</p>
+            <p>Her yeni oyun, herkese açılmadan önce dönemin en aktif fakültesinde oynanır.</p>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- 9 · Beş ilke -->
-    <section class="sec sec--cream" aria-labelledby="ilke">
+    <!-- 9 · Sözümüz: oyuncuya verilen sözler -->
+    <section class="sec sec--cream" aria-labelledby="soz">
       <div class="wrap">
-        <p class="kicker kicker--or">Neye inanıyoruz</p>
-        <h2 id="ilke" class="sec__title">Beş ilke.</h2>
-        <ol class="rules">
-          <li class="rule reveal"><span class="rule__no" aria-hidden="true">1</span><div><h3>Kapış, ama küçültme</h3><p>Rekabet gerçek: puan düşer, unvan kaybedilir, sıralama herkesin önünde. Ama kimse aşağılanmaz. Kaybeden, rövanşa çağrılan meslektaştır.</p></div></li>
-          <li class="rule reveal"><span class="rule__no" aria-hidden="true">2</span><div><h3>Fakülte gerçekliği</h3><p>Oyun bir diş hekimliği fakültesi gibi hissettirir: devam, rapor, büt, kadro, dekan. Ama fakülte dili tuz gibidir; yemeğin kendisi olmaz.</p></div></li>
-          <li class="rule reveal"><span class="rule__no" aria-hidden="true">3</span><div><h3>Kıdem kazanılır</h3><p>Unvan parayla alınmaz, şansla gelmez. Emek de yanmaz.</p></div></li>
-          <li class="rule reveal"><span class="rule__no" aria-hidden="true">4</span><div><h3>İki dokunuş</h3><p>Her oyun ana ekrandan en çok iki dokunuşla başlar. Tek el, başparmak yeter.</p></div></li>
-          <li class="rule reveal"><span class="rule__no" aria-hidden="true">5</span><div><h3>Doğru bilgi</h3><p>Her soru hekim onayından geçer, kaynağı vardır, hasta verisi içermez. Yanlış öğreten oyun, ne kadar eğlenceli olursa olsun, bizim oyunumuz değildir.</p></div></li>
-        </ol>
-        <ul class="redlines reveal" aria-label="Kırmızı çizgiler">
-          <li>Kıdem satılmaz</li><li>Şans kutusu yok</li><li>Hasta verisi yok</li><li>Oyuncu verisi satılmaz</li>
+        <p class="kicker kicker--or">Sözümüz</p>
+        <h2 id="soz" class="sec__title">Oyun ciddi, rekabet adil.</h2>
+        <ul class="promises">
+          <li class="promise reveal"><span class="promise__ico" aria-hidden="true"><img src="/assets/img/maskot-solo.svg" alt="" width="64" height="64"></span><h3>Kimse küçültülmez</h3><p>Kaybeden, rövanşa çağrılan meslektaştır.</p></li>
+          <li class="promise reveal"><span class="promise__ico" aria-hidden="true"><svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="24" fill="#F2B21E" stroke="#2A1406" stroke-width="4"/><circle cx="32" cy="32" r="15" fill="none" stroke="#C98A12" stroke-width="3"/><path d="M12 52 52 12" stroke="#2A1406" stroke-width="9" stroke-linecap="round"/><path d="M12 52 52 12" stroke="#FF6B00" stroke-width="4" stroke-linecap="round"/></svg></span><h3>Rütbe parayla alınmaz</h3><p>Maçta üstünlük satılmaz, şans kutusu yok.</p></li>
+          <li class="promise reveal"><span class="promise__ico" aria-hidden="true"><svg viewBox="0 0 64 64"><use href="#i-case"/></svg></span><h3>Doğru bilgi</h3><p>Sorular hekim onaylı ve kaynaklı. Hasta verisi yok.</p></li>
+          <li class="promise reveal"><span class="promise__ico" aria-hidden="true"><svg viewBox="0 0 64 64"><path d="M20 28v-7a12 12 0 0 1 24 0v7" fill="none" stroke="#2A1406" stroke-width="6"/><rect x="12" y="28" width="40" height="28" rx="7" fill="#5FAFE6" stroke="#2A1406" stroke-width="4"/><circle cx="32" cy="40" r="4" fill="#2A1406"/><path d="M32 42v6" stroke="#2A1406" stroke-width="4" stroke-linecap="round"/></svg></span><h3>Verin senin</h3><p>Oyuncu verisi satılmaz. Adın izinsiz paylaşılmaz.</p></li>
         </ul>
       </div>
     </section>
@@ -309,16 +367,15 @@
     <section class="sec sec--ink" aria-labelledby="saat">
       <div class="wrap clock-wrap">
         <div>
-          <p class="kicker kicker--gold">Takvim</p>
+          <p class="kicker kicker--gold">Gün boyu</p>
           <h2 id="saat" class="sec__title sec__title--light">Oyunun saati, fakültenin saati.</h2>
           <p class="sec__lead sec__lead--light">Günde en çok iki bildirim. Gece ve cumartesi hiç.</p>
         </div>
         <ol class="clock">
-          <li class="reveal"><time>00.00</time><span>Yeni günün terimi ve vakası açılır.</span></li>
-          <li class="reveal"><time>12.30</time><span>“Zil çaldı.” Öğle arası.</span></li>
-          <li class="reveal"><time>20.30</time><span>“Bugün yoklama alınmadı.” Yalnız seri tehlikedeyse.</span></li>
-          <li class="reveal"><time>Cumartesi</time><span>İzin günü. Seri istemez, bildirim yok.</span></li>
-          <li class="reveal"><time>Pazar 21.00</time><span>Ligler çıkar ve iner, fakültelerin dekanları belli olur.</span></li>
+          <li class="reveal"><time>00.00</time><span>Günün yeni terimi ve vakası.</span></li>
+          <li class="reveal"><time>12.30</time><span>“Zil çaldı.”</span></li>
+          <li class="reveal"><time>Cumartesi</time><span>İzin günü. Serin bozulmaz.</span></li>
+          <li class="reveal"><time>Pazar akşamı</time><span>Ligler çıkar ve iner.</span></li>
           <li class="reveal"><time>Sınav haftası</time><span>Bildirimler susar.</span></li>
         </ol>
       </div>

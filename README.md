@@ -62,9 +62,10 @@ Logo, maskot ya da font değişirse: `python3 araclar/hazirla.py` (kahraman logo
 
 ## Sayfa yapısı (v3 · 06.10.2026 · Kültür Kitabı 1.1'e göre)
 
-Kahraman (canlı logo) · kayan bant · Bir tur dene · Neden varız (manifesto, satırlar kaydırdıkça yanar) ·
+Kahraman (canlı logo) · kayan bant · Bir tur dene · Neden varız (`story.js`: ekrana sabitlenen, kaydırdıkça oynayan 6 sahne — tavla → kartlar → düello → defter → lig merdiveni → klinik; her sahnede tek kısa başlık) ·
 Kimin için (öğrenci · hekim · hoca) · Üç an · Sekiz oyun · Malzeme Ligleri (Fantom → Altın, 3D armalar `assets/img/lig/`) ·
-Fakülteler sahnede (Fakülte Kupası · kongre · yeni oyun önce en aktif fakültede) · Beş ilke + kırmızı çizgiler · Takvim · Sık sorulanlar · Kapanış.
+Fakülteler sahnede (Fakülte Kupası · kongre · yeni oyun önce en aktif fakültede) · Sözümüz (oyuncuya 4 söz) · Gün boyu · Sık sorulanlar · Kapanış.
+Kural (06.10.2026, Deniz): sitede oyuncunun bilmesi gerekmeyen bilgi olmaz — ekip içi tasarım ilkeleri, açık kararlar, iç terimler yazılmaz.
 Metinler yalnızca Kültür Kitabı'nın **Onaylı** bölümlerinden alınır. Hekimlik Yolu'nun ayrıntıları açık karar olduğu için sitede yalnız
 manifesto cümlesiyle geçer ("Unvanını kazanırsın. Çalışmazsan geri alınır.").
 
