@@ -127,15 +127,25 @@
     set: function (v) {
       on = !!v;
       try { localStorage.setItem(KEY, on ? "1" : "0"); } catch (e) {}
-      var fire = function () { document.dispatchEvent(new CustomEvent("dw:ses", { detail: on })); };
-      // bağlam askıdayken planlanan sesler sonradan topluca çalar → önce uyandır, sonra haber ver
-      if (on && init()) ctx.resume().then(fire, fire); else fire();
+      if (on && init()) ctx.resume();
+      // arayüz hemen güncellenir; uyanma süren sesler play() içinde bekletilir
+      document.dispatchEvent(new CustomEvent("dw:ses", { detail: on }));
     },
     // name: ses adı · delay: saniye · o: seçenekler
     play: function (name, delay, o) {
       if (!on || !S[name]) return;
       if (!init()) return;
-      if (ctx.state !== "running") { ctx.resume(); return; }   // jest gelmeden planlama yapma
+      if (ctx.state !== "running") {
+        // bağlam uyanıyorsa sesi kaybetme: uyanınca kalan gecikmeyle çal; çok geç uyanırsa atla (toplu patlama olmasın)
+        var asked = performance.now();
+        ctx.resume().then(function () {
+          if (ctx.state !== "running" || !on) return;
+          var late = (performance.now() - asked) / 1000, d = (delay || 0) - late;
+          if (d < -0.15) return;
+          try { S[name](ctx.currentTime + Math.max(0, d) + 0.01, o); } catch (e) {}
+        }, function () {});
+        return;
+      }
       try { S[name](ctx.currentTime + (delay || 0) + 0.01, o); } catch (e) {}
     }
   };

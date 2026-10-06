@@ -29,7 +29,8 @@
     });
     // ses açıldığında logo sesli olarak yeniden kurulur — en etkili ilk an
     document.addEventListener("dw:ses", function (e) {
-      if (e.detail) {
+      paintSnd(); if (hint) hint.hidden = true;
+      if (e.detail && !window.__dwStoryWants) {
         S.play("pop", 0, { gain: 0.35 });
         var hero = $("#hero");
         if (window.DWIntro && hero && hero.getBoundingClientRect().bottom > 80) window.DWIntro.play(true);

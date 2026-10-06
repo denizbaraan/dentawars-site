@@ -123,15 +123,38 @@
     return idx;
   }
 
-  // ses: yalnız ileri giderken, sahneye girildiğinde
-  function cue(i) {
-    var S = window.DWSfx; if (!S) return;
-    if (i === 0) { S.play("tick", 0.05, { f0: 1600, gain: 0.12 }); S.play("tick", 0.16, { f0: 1300, gain: 0.12 }); S.play("tick", 0.3, { f0: 1500, gain: 0.1 }); }
-    if (i === 1) { S.play("whoosh", 0, { dur: 0.3, f0: 600, f1: 3600, gain: 0.3 }); S.play("pop", 0.15); }
-    if (i === 2) { S.play("whoosh", 0, { dur: 0.25, pan: -0.6, gain: 0.3 }); S.play("whoosh", 0.02, { dur: 0.25, pan: 0.6, gain: 0.3 }); S.play("clang", 0.25, { gain: 0.28 }); }
-    if (i === 3) { S.play("bonk", 0.1); S.play("sparkle", 0.6, { gain: 0.18 }); }
-    if (i === 4) { for (var k = 0; k < 5; k++) S.play("pop", 0.2 + k * 0.12, { f0: 300 + k * 60, f1: 800 + k * 120, gain: 0.22 }); }
-    if (i === 5) { S.play("fanfare", 0.1, { gain: 0.22 }); }
+  // Ses planı: her olay sahnenin kendi saatinde (sn), render(p)'deki segmentlerle birebir.
+  // Sahne 2,6 sn; q = t / 2,6. Bounce temas noktaları eBounce'un 0,364 · 0,727 · 0,909 · 1 anları.
+  var B = [0.364, 0.727, 0.909, 1];
+  var CUES = [
+    // A · tavla: tahta açılır, iki zar sekerek düşer
+    [[0.05, "pop", { f0: 220, f1: 520, gain: 0.25 }]]
+      .concat(B.map(function (b, k) { return [0.31 + b * 0.99, "tick", { f0: 1700 - k * 150, gain: 0.16 - k * 0.03, pan: -0.3 }]; }))
+      .concat(B.map(function (b, k) { return [0.52 + b * 0.99, "tick", { f0: 1450 - k * 120, gain: 0.15 - k * 0.03, pan: 0.3 }]; })),
+    // B · üç kart yelpaze gibi açılır
+    [0, 1, 2].map(function (k) { return [0.13 + k * 0.21, "whoosh", { dur: 0.25, f0: 700, f1: 3800, gain: 0.22, pan: (k - 1) * 0.6 }]; })
+      .concat([0, 1, 2].map(function (k) { return [0.5 + k * 0.21, "pop", { f0: 360 + k * 80, f1: 900 + k * 160, gain: 0.22 }]; })),
+    // C · iki yandan gelir, çarpışır, VS, skor
+    [[0.1, "whoosh", { dur: 0.7, f0: 300, f1: 2600, gain: 0.3, pan: -0.7 }], [0.12, "whoosh", { dur: 0.7, f0: 300, f1: 2600, gain: 0.3, pan: 0.7 }],
+     [0.88, "impact", { f0: 150, f1: 45, gain: 0.7 }], [0.88, "clang", { f0: 610, gain: 0.26 }], [0.92, "sparkle", { gain: 0.14 }],
+     [1.45, "pop", { f0: 500, f1: 1100, gain: 0.25 }], [1.55, "pop", { f0: 600, f1: 1300, gain: 0.22 }]],
+    // D · yanlış kart deftere düşer, 3 · 7 · 21, doğru olarak geri döner
+    [[0.05, "pop", { f0: 240, f1: 480, gain: 0.22 }], [0.31, "whoosh", { dur: 0.6, f0: 2400, f1: 400, gain: 0.25 }], [0.94, "bonk", { gain: 0.32 }]]
+      .concat([0, 1, 2].map(function (k) { return [0.99 + k * 0.21, "pop", { f0: 420 + k * 110, f1: 1000 + k * 220, gain: 0.24 }]; }))
+      .concat([[1.72, "whoosh", { dur: 0.5, f0: 500, f1: 4200, gain: 0.25 }], [2.24, "sparkle", { f0: 1760, gain: 0.2 }]]),
+    // E · basamaklar yükselir, Dento armadan armaya hoplar
+    [0, 1, 2, 3, 4, 5].map(function (k) { return [0.05 + k * 0.13, "impact", { f0: 110 + k * 10, f1: 60, gain: 0.18 }]; })
+      .concat([0, 1, 2, 3, 4].map(function (k) { return [(0.36 + 0.12 * (k + 1)) * 2.6 - 0.12, "boing", { f0: 200 + k * 35, gain: 0.2 }]; }))
+      .concat([[2.5, "sparkle", { f0: 2093, gain: 0.18 }]]),
+    // F · ışınlar, diş, üç yıldız, fanfar
+    [[0, "whoosh", { dur: 0.5, f0: 400, f1: 3000, gain: 0.22 }], [0.45, "impact", { f0: 160, f1: 70, gain: 0.35 }]]
+      .concat([0, 1, 2].map(function (k) { return [0.85 + k * 0.18, "sparkle", { f0: 1568 + k * 200, gain: 0.16, steps: [1, 1.5] }]; }))
+      .concat([[1.5, "fanfare", { gain: 0.22 }]])
+  ];
+  function cue(i, from) {
+    var S = window.DWSfx; if (!S || !S.isOn() || !CUES[i]) return;
+    from = from || 0;
+    CUES[i].forEach(function (c) { if (c[0] >= from) S.play(c[1], c[0] - from, c[2]); });
   }
 
   var caps = Array.prototype.slice.call(document.querySelectorAll("#storyCaps .cap"));
@@ -153,7 +176,7 @@
     if (idx !== last) {
       caps.forEach(function (c, i) { c.classList.toggle("is-on", i === idx); });
       dots.forEach(function (d, i) { d.classList.toggle("is-on", i <= idx); d.setAttribute("aria-current", i === idx ? "step" : "false"); });
-      if (playing && idx > last) cue(idx);
+      if (playing && idx > last) cue(idx, Math.max(0, (p * N - idx) * SCENE - 0.05));
       last = idx;
     }
   }
@@ -173,6 +196,18 @@
   }
   dots.forEach(function (d, i) { d.addEventListener("click", function () { play(i / N + 0.001); }); });
   document.getElementById("storyReplay").addEventListener("click", function () { play(0); });
+  // "Sesli izle": sesi açar, sahneyi baştan sesli oynatır
+  var sndBtn = document.getElementById("storySound");
+  function paintSnd() { if (sndBtn) sndBtn.hidden = !!(window.DWSfx && window.DWSfx.isOn()); }
+  if (sndBtn) sndBtn.addEventListener("click", function () {
+    window.__dwStoryWants = true;
+    window.DWSfx.set(true);
+  });
+  document.addEventListener("dw:ses", function (e) {
+    paintSnd();
+    if (e.detail && window.__dwStoryWants) { window.__dwStoryWants = false; play(0); }
+  });
+  paintSnd();
 
   if ("IntersectionObserver" in window) {
     new IntersectionObserver(function (e) {

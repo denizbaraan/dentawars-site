@@ -546,3 +546,9 @@ html:not(.js) .story__stage { display: none; }
   .promise__ico, .promise__ico img, .promise__ico svg { width: 52px; height: 52px; margin: 0; grid-row: span 2; }
 }
 .story.is-static .story__ctrl, html:not(.js) .story__ctrl { display: none; }
+.story__sound { all: unset; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; font-weight: 800; font-size: 14px; color: var(--ink); background: var(--m-gold); border: 2px solid var(--ink); border-radius: 12px; padding: 8px 14px; box-shadow: 0 4px 0 var(--or-700); animation: hint-in .4s var(--spring); }
+.story__sound svg { width: 18px; height: 18px; }
+.story__sound:active { transform: translateY(3px); box-shadow: 0 1px 0 var(--or-700); }
+.story__sound:focus-visible { outline: 3px solid var(--glass); outline-offset: 3px; }
+.story__sound[hidden] { display: none; }
+@media (max-width: 560px) { .story__ctrl { flex-wrap: wrap; gap: 12px; } }
