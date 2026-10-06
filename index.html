@@ -144,7 +144,7 @@
       </div>
     </section>
 
-    <!-- 3 · Neden varız: kaydırdıkça oynayan motion hikâye (story.js) -->
+    <!-- 3 · Neden varız: ekrana girince kendi oynayan motion hikâye (story.js) — kaydırmayı tutmaz -->
     <section class="story" id="neden" aria-labelledby="neden-baslik">
       <div class="story__pin">
         <div class="wrap story__head">
@@ -220,7 +220,12 @@
           <li class="cap"><b>Çalış, yüksel.</b><span>Bırakırsan geri düşersin.</span></li>
           <li class="cap cap--end"><b>Ders arasında oyna, klinikte hatırla.</b><span>Mezun olunca da bitmez.</span></li>
         </ol>
-        <div class="story__dots" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        <div class="story__ctrl">
+          <div class="story__dots" role="group" aria-label="Sahneler">
+            <button type="button" aria-label="Sahne 1: Ders arası"></button><button type="button" aria-label="Sahne 2: Masadakini değiştirdik"></button><button type="button" aria-label="Sahne 3: Kapış"></button><button type="button" aria-label="Sahne 4: Yanlışın kaybolmaz"></button><button type="button" aria-label="Sahne 5: Çalış, yüksel"></button><button type="button" aria-label="Sahne 6: Ders arasında oyna, klinikte hatırla"></button>
+          </div>
+          <button class="story__replay" id="storyReplay" type="button" data-sfx="pop">↻ Tekrar oynat</button>
+        </div>
       </div>
     </section>
 

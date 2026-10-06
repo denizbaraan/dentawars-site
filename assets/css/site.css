@@ -502,14 +502,11 @@ main { overflow-x: hidden; overflow-x: clip; }
    v4 · "Neden varız" kaydırma hikâyesi + sözler (06.10.2026)
    ========================================================= */
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
-.story { position: relative; height: 620vh; background: var(--g-ink); color: var(--enamel); border-top: var(--line) solid var(--ink); }
-.story__pin {
-  position: sticky; top: 60px; height: calc(100vh - 60px); height: calc(100svh - 60px);
-  display: grid; grid-template-rows: auto 1fr auto auto; align-items: center; overflow: hidden; padding-bottom: 22px;
-}
-.story__head { padding-top: 22px; }
+.story { position: relative; background: var(--g-ink); color: var(--enamel); border-top: var(--line) solid var(--ink); overflow: hidden; }
+.story__pin { display: grid; justify-items: center; gap: 10px; padding-block: clamp(48px, 7vw, 88px) clamp(40px, 6vw, 72px); }
+.story__head { width: 100%; }
 .story__head .kicker { margin: 0; }
-.story__stage { width: min(100%, 980px); height: 100%; max-height: 62vh; margin: 0 auto; overflow: hidden; }
+.story__stage { display: block; width: min(100%, 920px, 100vh * 1.4); height: auto; margin: 0 auto; overflow: hidden; }
 .st-vs { font-family: "Lilita One", "Poppins", sans-serif; font-size: 92px; fill: #FFD24A; stroke: #2A1406; stroke-width: 14px; paint-order: stroke fill; stroke-linejoin: round; }
 .st-score { font-family: "Lilita One", "Poppins", sans-serif; font-size: 50px; fill: #FFD24A; }
 .st-day { font-family: "Lilita One", "Poppins", sans-serif; font-size: 40px; fill: #FFFFFF; stroke: #2A1406; stroke-width: 6px; paint-order: stroke fill; }
@@ -520,12 +517,17 @@ main { overflow-x: hidden; overflow-x: clip; }
 .cap b { font-weight: 800; font-size: clamp(28px, 4.4vw, 54px); line-height: 1.05; letter-spacing: -.025em; }
 .cap span { font-weight: 600; font-size: clamp(15px, 1.6vw, 19px); color: var(--peach); opacity: .8; }
 .cap--end b { color: var(--gold-300); text-shadow: 0 .07em 0 var(--or-700); font-size: clamp(26px, 4vw, 50px); }
-.story__dots { display: flex; justify-content: center; gap: 10px; }
-.story__dots i { width: 34px; height: 8px; border-radius: 6px; background: rgba(253, 235, 216, .18); transition: background-color .3s, width .3s var(--spring); }
-.story__dots i.is-on { background: var(--or); }
+.story__ctrl { display: flex; align-items: center; justify-content: center; gap: 18px; min-height: 44px; }
+.story__dots { display: flex; gap: 8px; }
+.story__dots button { all: unset; cursor: pointer; width: 34px; height: 8px; border-radius: 6px; background: rgba(253, 235, 216, .2); transition: background-color .3s, transform .2s; }
+.story__dots button:hover { transform: scaleY(1.6); }
+.story__dots button:focus-visible { outline: 3px solid var(--glass); outline-offset: 4px; }
+.story__dots button.is-on { background: var(--or); }
+.story__replay { all: unset; cursor: pointer; font-weight: 800; font-size: 14px; color: var(--gold); padding: 8px 14px; border: 2px solid var(--gold); border-radius: 12px; opacity: 0; pointer-events: none; transition: opacity .3s; }
+.story.is-done .story__replay { opacity: 1; pointer-events: auto; }
+.story__replay:hover { background: rgba(242, 178, 30, .15); }
+.story__replay:focus-visible { outline: 3px solid var(--glass); outline-offset: 3px; }
 /* hareket azaltılmışsa ya da JS yoksa: sabit sahne + bütün başlıklar alt alta */
-.story.is-static, html:not(.js) .story { height: auto; }
-.story.is-static .story__pin, html:not(.js) .story__pin { position: static; height: auto; padding-block: 64px; }
 .story.is-static .story__caps, html:not(.js) .story__caps { height: auto; display: grid; gap: 18px; }
 .story.is-static .cap, html:not(.js) .cap { position: static; opacity: 1; transform: none; }
 html:not(.js) .story__stage { display: none; }
@@ -539,9 +541,8 @@ html:not(.js) .story__stage { display: none; }
 .promise p { color: var(--ink-soft); font-size: 15px; line-height: 1.5; }
 @media (max-width: 980px) { .promises { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 560px) {
-  .story { height: 560vh; }
-  .story__stage { max-height: 54vh; }
   .promises { grid-template-columns: 1fr; }
   .promise { display: grid; grid-template-columns: 56px 1fr; column-gap: 14px; align-items: center; padding: 16px; }
   .promise__ico, .promise__ico img, .promise__ico svg { width: 52px; height: 52px; margin: 0; grid-row: span 2; }
 }
+.story.is-static .story__ctrl, html:not(.js) .story__ctrl { display: none; }

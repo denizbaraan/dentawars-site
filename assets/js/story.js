@@ -135,32 +135,52 @@
   }
 
   var caps = Array.prototype.slice.call(document.querySelectorAll("#storyCaps .cap"));
-  var dots = Array.prototype.slice.call(sec.querySelectorAll(".story__dots i"));
+  var dots = Array.prototype.slice.call(sec.querySelectorAll(".story__dots button"));
   var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  if (reduce) { sec.classList.add("is-static"); render(1); caps.forEach(function (c) { c.classList.add("is-on"); }); return; }
-  sec.classList.add("is-live");
 
-  var last = -1, ticking = false, armed = false;
-  function progress() {
-    // bölüm ekranın %60'ına girdiğinde başlar: sabitlenme anında ilk sahne zaten kurulmuş olur
-    var r = sec.getBoundingClientRect(), lead = window.innerHeight * 0.6, span = sec.offsetHeight - window.innerHeight + lead;
-    return span > 0 ? cl((lead - r.top) / span) : 0;
-  }
-  function update() {
-    ticking = false;
-    var idx = render(progress());
+  // dar ekranda kenar boşluklarını kırp: çizimler büyüsün
+  function fit() { svg.setAttribute("viewBox", window.innerWidth < 600 ? "105 -10 790 560" : "0 -30 1000 600"); }
+  fit(); window.addEventListener("resize", fit);
+
+  if (reduce) { sec.classList.add("is-static"); render(1); caps.forEach(function (c) { c.classList.add("is-on"); }); return; }
+
+  // Zamanla oynar: bölüm ekrana girince başlar, çıkınca durur, sayfa kaydırması hiç tutulmaz.
+  var SCENE = 2.6, DUR = SCENE * N;           // sahne başına 2,6 sn → 15,6 sn
+  var cur = 0, last = -1, t0 = 0, playing = false, visible = false, done = false;
+  function paint(p) {
+    cur = p;
+    var idx = render(p);
     if (idx !== last) {
       caps.forEach(function (c, i) { c.classList.toggle("is-on", i === idx); });
-      dots.forEach(function (d, i) { d.classList.toggle("is-on", i <= idx); });
-      if (armed && idx > last) cue(idx);
+      dots.forEach(function (d, i) { d.classList.toggle("is-on", i <= idx); d.setAttribute("aria-current", i === idx ? "step" : "false"); });
+      if (playing && idx > last) cue(idx);
       last = idx;
     }
   }
-  window.addEventListener("scroll", function () { armed = true; if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
-  // dar ekranda kenar boşluklarını kırp: çizimler büyüsün
-  function fit() { svg.setAttribute("viewBox", window.innerWidth < 600 ? "105 -10 790 560" : "0 -30 1000 600"); }
-  fit();
-  window.addEventListener("resize", function () { fit(); update(); });
-  update();
-  window.DWStory = { render: render };
+  function loop(now) {
+    if (!playing) return;
+    var p = (now - t0) / 1000 / DUR;
+    if (p >= 1) { p = 1; playing = false; done = true; sec.classList.add("is-done"); }
+    paint(p);
+    if (playing) requestAnimationFrame(loop);
+  }
+  function play(from) {
+    from = cl(from || 0);
+    t0 = performance.now() - from * DUR * 1000;
+    last = Math.floor(from * N) - 1;            // başlanan sahnenin sesi de çalsın
+    done = false; sec.classList.remove("is-done");
+    if (!playing) { playing = true; requestAnimationFrame(loop); }
+  }
+  dots.forEach(function (d, i) { d.addEventListener("click", function () { play(i / N + 0.001); }); });
+  document.getElementById("storyReplay").addEventListener("click", function () { play(0); });
+
+  if ("IntersectionObserver" in window) {
+    new IntersectionObserver(function (e) {
+      visible = e[0].isIntersecting;
+      if (visible && !playing && !done) play(cur);
+      else if (!visible && playing) playing = false;  // ekrandan çıkınca dur; dönünce kaldığı yerden
+    }, { threshold: 0.45 }).observe(svg);
+  } else { paint(1); }
+  paint(0);
+  window.DWStory = { render: render, play: play };
 })();
