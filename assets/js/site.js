@@ -53,7 +53,7 @@
     if (el) S.play(el.getAttribute("data-sfx"), 0, { gain: 0.35 });
   });
   if (hover) {
-    $$(".btn, .mode, .hero__stage").forEach(function (el) {
+    $$(".btn, .mode, .game, .hero__stage, .faq summary").forEach(function (el) {
       el.addEventListener("pointerenter", function () { S.play("tick", 0, { f0: 2400, gain: 0.05 }); });
     });
   }
@@ -97,7 +97,7 @@
 
   // ---------- kartlarda 3B eğim ----------
   if (hover && !reduce) {
-    $$(".tilt, .mode").forEach(function (el) {
+    $$(".tilt, .mode, .game").forEach(function (el) {
       el.addEventListener("pointermove", function (e) {
         var r = el.getBoundingClientRect();
         var x = (e.clientX - r.left) / r.width - 0.5, y = (e.clientY - r.top) / r.height - 0.5;
@@ -109,7 +109,7 @@
   }
 
   // ---------- mod kartı: Dento zıplar ----------
-  $$(".mode").forEach(function (el) {
+  $$(".mode, .game").forEach(function (el) {
     el.addEventListener("click", function () {
       el.classList.remove("jump"); void el.offsetWidth; el.classList.add("jump");
     });
@@ -141,6 +141,29 @@
     }, { rootMargin: "0px 0px -12% 0px" });
     items.forEach(function (el) { io.observe(el); });
   }
+
+  // ---------- manifesto: satır ekranın ortasından geçince yanar ----------
+  var lines = $$(".mline");
+  if (lines.length) {
+    if (reduce || !("IntersectionObserver" in window)) lines.forEach(function (l) { l.classList.add("is-lit"); });
+    else {
+      var lio = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (!e.isIntersecting || e.target.classList.contains("is-lit")) return;
+          e.target.classList.add("is-lit"); lio.unobserve(e.target);
+          var k = lines.indexOf(e.target);
+          if (e.target.classList.contains("mline--end")) S.play("sparkle", 0, { gain: 0.2 });
+          else S.play("pop", 0, { f0: 260 + k * 30, f1: 700 + k * 60, gain: 0.18 });
+        });
+      }, { rootMargin: "-38% 0px -38% 0px" });
+      lines.forEach(function (l) { lio.observe(l); });
+    }
+  }
+
+  // ---------- sık sorulanlar: açılınca ses ----------
+  $$(".faq details").forEach(function (d) {
+    d.addEventListener("toggle", function () { if (d.open) S.play("pop", 0, { f0: 420, f1: 900, gain: 0.2 }); });
+  });
 
   // ---------- konfeti (kendi kodu, canvas) ----------
   var cv = $("#confetti"), cx = cv && cv.getContext ? cv.getContext("2d") : null, bits = [], raf = 0;
@@ -178,7 +201,8 @@
     { q: "Süt dişi dentisyonunda kaç diş bulunur?", o: ["16", "20", "24", "28"], a: 1 },
     { q: "Vücudun en sert dokusu hangisidir?", o: ["Dentin", "Diş minesi", "Sement", "Kortikal kemik"], a: 1 },
     { q: "Halk arasında “yirmi yaş dişi” denen diş hangisidir?", o: ["Kanin", "İkinci küçük azı", "Birinci büyük azı", "Üçüncü büyük azı"], a: 3 },
-    { q: "En büyük tükürük bezi hangisidir?", o: ["Parotis", "Submandibular", "Sublingual", "Minör tükürük bezleri"], a: 0 }
+    { q: "En büyük tükürük bezi hangisidir?", o: ["Parotis", "Submandibular", "Sublingual", "Minör tükürük bezleri"], a: 0 },
+    { q: "FDI sisteminde sol alt birinci büyük azı dişinin numarası kaçtır?", o: ["26", "36", "46", "16"], a: 1 }
   ];
   var LETTERS = ["A", "B", "C", "D"];
   var quiz = $("#quiz");

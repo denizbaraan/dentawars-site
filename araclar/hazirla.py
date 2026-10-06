@@ -46,6 +46,17 @@ og = Image.open(IMG / "og@2x.png").convert("RGB")
 assert og.size == (2400, 1260), og.size
 og.resize((1200, 630), Image.LANCZOS).save(IMG / "og.png", optimize=True)
 (IMG / "og@2x.png").unlink()
+
+# 6 · Malzeme Ligleri armaları (instagram/v7/arma3d, ChatGPT ile üretilmiş, yazısız) → 480 px WebP
+(IMG / "lig").mkdir(exist_ok=True)
+for src in sorted((DW / "instagram" / "v7" / "arma3d").glob("lig-*.png")):
+    im = Image.open(src).convert("RGBA")
+    bb = im.getchannel("A").getbbox(); im = im.crop(bb)              # şeffaf kenarı kırp
+    side = max(im.size); sq = Image.new("RGBA", (side, side), (0, 0, 0, 0))
+    sq.paste(im, ((side - im.width) // 2, (side - im.height) // 2))
+    sq = sq.resize((480, 480), Image.LANCZOS)
+    sq.save(IMG / "lig" / (src.stem + ".webp"), quality=86, method=6)
+
 # 5 · Kahraman bölümündeki canlı logo (index.html içine gömülür)
 subprocess.run(["python3", str(SITE / "araclar" / "hero_logo.py")], check=True)
 print("hazır")

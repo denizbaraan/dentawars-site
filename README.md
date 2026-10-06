@@ -56,13 +56,23 @@ Logo, maskot ya da font değişirse: `python3 araclar/hazirla.py` (kahraman logo
 4. Alan adı sağlayıcısında DNS:
    - `www` → **CNAME** → `<hesap>.github.io`
    - kök `dentawars.com` → **A** kayıtları `185.199.108.153` · `185.199.109.153` · `185.199.110.153` · `185.199.111.153`
-5. Pages ayarında *Enforce HTTPS* işaretlenir (sertifika DNS oturunca birkaç dakika–birkaç saat içinde gelir).
+5. Pages ayarında *Enforce HTTPS* işaretlenir. ✅ 06.10.2026'da yapıldı; sertifika GitHub'da (Let's Encrypt), kendisi yenilenir.
+   Sertifika günlerce gelmezse: Pages ayarından alan adını kaldırıp yeniden eklemek isteği tetikliyor (bu sitede böyle çözüldü).
 `CNAME` dosyası depoda hazır. Kod GitHub'a bağlı değil: başka bir statik barındırmaya olduğu gibi taşınır.
+
+## Sayfa yapısı (v3 · 06.10.2026 · Kültür Kitabı 1.1'e göre)
+
+Kahraman (canlı logo) · kayan bant · Bir tur dene · Neden varız (manifesto, satırlar kaydırdıkça yanar) ·
+Kimin için (öğrenci · hekim · hoca) · Üç an · Sekiz oyun · Malzeme Ligleri (Fantom → Altın, 3D armalar `assets/img/lig/`) ·
+Fakülteler sahnede (Fakülte Kupası · kongre · yeni oyun önce en aktif fakültede) · Beş ilke + kırmızı çizgiler · Takvim · Sık sorulanlar · Kapanış.
+Metinler yalnızca Kültür Kitabı'nın **Onaylı** bölümlerinden alınır. Hekimlik Yolu'nun ayrıntıları açık karar olduğu için sitede yalnız
+manifesto cümlesiyle geçer ("Unvanını kazanırsın. Çalışmazsan geri alınır.").
 
 ## İçerik kuralları
 
 - Uydurma sayı, superlatif, "hekim onaylı" gibi henüz gerçekleşmemiş söz yok.
-- TÜRKPATENT taraması bitmemiş oyun adları (Günün Terimi, Anlat Bakalım, Muayenehane) yazılmaz;
-  modlar genel adlarıyla anlatılır.
+- 🔴 Onaylanan sekiz oyun adı (Düello, Terim Merdiveni…) TÜRKPATENT sınıf 9 + 28 taramasından geçmeden **sitede yazılmaz**;
+  oyunlar ne yaptıklarıyla anlatılır ("Bire bir kapışma", "Günün terimleri"…). Tarama bitince `index.html` › Sekiz oyun güncellenir.
+- Fiyat yazılmaz. Gelir ilkesi yazılabilir: ücretsiz oynanır, isteğe bağlı abonelik, kıdem satılmaz.
 - Lilita One'da ğ ş ı İ yok → Türkçe başlık Poppins 800; Lilita yalnız rakam/ASCII.
 - App Store / Google Play rozeti mağazalar açılana kadar link değil, "Yakında" etiketi.
